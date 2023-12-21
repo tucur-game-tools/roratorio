@@ -121,8 +121,6 @@ CardIdToSetIdMap[] = [];
 
 エンチャント設定は `g_constDataManager.enchListDataManager.sourceArray` に追加する<br>
 
-アイテムのエンチャント設定をいれたら `g_constDataManager.enchListDataManager.reverseResolveArrayItemId` のEquipIDと一致するIndexの位置に エンチャントID を設定する<br>
-
 エンチャント情報
 ```
 [
