@@ -257,6 +257,7 @@ function GetLowerJobSeriesID(jobID){
 
 	// サモナー系
 	case JOB_ID_SUMMONER:
+	case MIG_JOB_ID_81:
 		return JOB_SERIES_ID_SUMMONER;
 
 	}
@@ -358,6 +359,7 @@ function GetHigherJobSeriesID(jobID) {
 		return 20;
 
 	case JOB_ID_SUMMONER:
+	case MIG_JOB_ID_81:
 		return JOB_SERIES_ID_SUMMONER;
 
 	}
@@ -375,6 +377,7 @@ function IsDoramJob(jobID) {
 
 	switch (jobID) {
 	case JOB_ID_SUMMONER:
+	case MIG_JOB_ID_81:
 		return true;
 	}
 
@@ -516,6 +519,7 @@ function GetBaseLevelMin(jobId) {
 	case MIG_JOB_ID_BIOLO:
 	case MIG_JOB_ID_SKY_EMPEROR:
 	case MIG_JOB_ID_SOUL_ASCETIC:
+	case MIG_JOB_ID_81:
 		return 200;
 
 	case JOB_ID_RUNEKNIGHT:
@@ -575,6 +579,7 @@ function GetBaseLevelMax(jobId) {
 	case MIG_JOB_ID_BIOLO:
 	case MIG_JOB_ID_SKY_EMPEROR:
 	case MIG_JOB_ID_SOUL_ASCETIC:
+	case MIG_JOB_ID_81:
 		return 250;
 
 	case JOB_ID_RUNEKNIGHT:
@@ -706,6 +711,7 @@ function GetJobLevelMax(jobId) {
 	case MIG_JOB_ID_BIOLO:
 	case MIG_JOB_ID_SKY_EMPEROR:
 	case MIG_JOB_ID_SOUL_ASCETIC:
+	case MIG_JOB_ID_81:
 		return 50;
 
 	}
@@ -761,6 +767,7 @@ function GetStatusMax(jobId, bChild) {
 		case MIG_JOB_ID_BIOLO:
 		case MIG_JOB_ID_SKY_EMPEROR:
 		case MIG_JOB_ID_SOUL_ASCETIC:
+		case MIG_JOB_ID_81:
 			return 117;
 
 		case JOB_ID_TAEGWON:
@@ -817,6 +824,7 @@ function GetStatusMax(jobId, bChild) {
 	case MIG_JOB_ID_BIOLO:
 	case MIG_JOB_ID_SKY_EMPEROR:
 	case MIG_JOB_ID_SOUL_ASCETIC:
+	case MIG_JOB_ID_81:
 
 		return 130;
 
@@ -2481,6 +2489,13 @@ function GetUnconfirmedHPSPArray() {
 		];
 
 		g_unconfirmedHPSPArray[MIG_JOB_ID_SOUL_ASCETIC] = [
+			[200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250],
+			[200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250],
+		];
+
+		// XXX: 独自実装
+
+		g_unconfirmedHPSPArray[MIG_JOB_ID_81] = [
 			[200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250],
 			[200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250],
 		];

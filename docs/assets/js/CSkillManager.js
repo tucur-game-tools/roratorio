@@ -35617,7 +35617,103 @@ function CSkillManager() {
 		};
 		this.dataArray[skillId] = skillData;
 		skillId++;
+		
+		// XXX: 独自実装
 
+		// ----------------------------------------------------------------
+		// タイガースラッシュ
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1205 = skillId;
+		skillData = new function() {
+			this.prototype = new CSkillData();
+			CSkillData.call(this);
+
+			this.id = skillId;
+			this.name = "タイガースラッシュ";
+			this.kana = "タイガースラッシュ";
+			this.maxLv = 7;
+			this.type = CSkillData.TYPE_ACTIVE | CSkillData.TYPE_PHYSICAL;
+			this.range = CSkillData.RANGE_LONG;
+			this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
+
+		// ----------------------------------------------------------------
+		// タイガーハウリング
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1206 = skillId;
+		skillData = new function() {
+			this.prototype = new CSkillData();
+			CSkillData.call(this);
+
+			this.id = skillId;
+			this.name = "タイガーハウリング";
+			this.kana = "タイガーハウリング";
+			this.maxLv = 7;
+			this.type = CSkillData.TYPE_ACTIVE | CSkillData.TYPE_PHYSICAL;
+			this.range = CSkillData.RANGE_LONG;
+			this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
+
+		// ----------------------------------------------------------------
+		// タイガーストライク
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1207 = skillId;
+		skillData = new function() {
+			this.prototype = new CSkillData();
+			CSkillData.call(this);
+
+			this.id = skillId;
+			this.name = "タイガーストライク";
+			this.kana = "タイガーストライク";
+			this.maxLv = 7;
+			this.type = CSkillData.TYPE_ACTIVE | CSkillData.TYPE_PHYSICAL;
+			this.range = CSkillData.RANGE_LONG;
+			this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
+
+		// ----------------------------------------------------------------
+		// ディアーブリーズ
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1208 = skillId;
+		skillData = new function() {
+			this.prototype = new CSkillData();
+			CSkillData.call(this);
+
+			this.id = skillId;
+			this.name = "ディアーブリーズ";
+			this.kana = "ディアーブリーズ";
+			this.maxLv = 7;
+			this.type = CSkillData.TYPE_ACTIVE | CSkillData.TYPE_MAGICAL;
+			this.range = CSkillData.RANGE_MAGIC;
+			this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
+
+		// ----------------------------------------------------------------
+		// ディアーキャノン
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1209 = skillId;
+		skillData = new function() {
+			this.prototype = new CSkillData();
+			CSkillData.call(this);
+
+			this.id = skillId;
+			this.name = "ディアーキャノン";
+			this.kana = "ディアーキャノン";
+			this.maxLv = 7;
+			this.type = CSkillData.TYPE_ACTIVE | CSkillData.TYPE_MAGICAL;
+			this.range = CSkillData.RANGE_MAGIC;
+			this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
 
 
 
