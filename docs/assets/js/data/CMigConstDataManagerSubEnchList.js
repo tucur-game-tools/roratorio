@@ -54,7 +54,6 @@ function CMigConstDataManagerSubEnchList () {
 	 * @return エンチャントリストのID配列
 	 */
 	this.GetEnchListIdArrayByItemId = function (itemId) {
-
 		if (Array.isArray(this.reverseResolveArrayItemId[itemId])) {
 			return this.reverseResolveArrayItemId[itemId].slice();
 		}
