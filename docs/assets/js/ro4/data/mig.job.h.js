@@ -483,6 +483,12 @@ function IsSameJobClass(jobIdTarget, jobIdCheck = n_A_JOB) {
 	case MIG_JOB_ID_SOUL_ASCETIC:
 		jobIdArrayCheck.push(JOB_ID_SOUL_REAPER);
 		break;
+		
+	// XXX: 独自実装
+	case MIG_JOB_ID_81:
+		jobIdArrayCheck.push(MIG_JOB_ID_SUMMONER);
+		break;
+		
 	}
 
 
