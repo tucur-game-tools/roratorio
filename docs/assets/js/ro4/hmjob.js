@@ -576,7 +576,11 @@ function GetPAtk() {
 		value += 2 * bufLv;
 	}
 
-
+	// XXX: 独自実装　位置悪い気もする
+	confval = g_objCharaConfCustomAtk.GetConf(CCharaConfCustomAtk.CONF_ID_PATK_PLUS);
+	if (confval != 0) {
+		value += confval;
+	}
 
 	return value;
 }
@@ -686,6 +690,11 @@ function GetSMatk() {
 		value += 2 * bufLv;
 	}
 
+	// XXX: 独自実装　位置悪い気もする
+	confval = g_objCharaConfCustomAtk.GetConf(CCharaConfCustomAtk.CONF_ID_SMATK_PLUS);
+	if (confval != 0) {
+		value += confval;
+	}
 
 
 	return value;

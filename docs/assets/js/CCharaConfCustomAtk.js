@@ -440,6 +440,30 @@ function CCharaConfCustomAtk(confArray) {
 		confId++;
 
 
+		// XXX: 独自実装
+		CCharaConfCustomAtk.CONF_ID_PATK_PLUS = confId;
+		confData = [
+			confId,
+			CConfBase.ConfText("P.Atk+"),
+			CConfBase.ConfControlType(CONTROL_TYPE_SELECTBOX_NUMBER),
+			CConfBase.ConfDefaultValue(0),
+			CConfBase.ConfMinValue(-500),
+			CConfBase.ConfMaxValue(500)
+		];
+		this.confDataObj[confId] = confData;
+		confId++;
+
+		CCharaConfCustomAtk.CONF_ID_SMATK_PLUS = confId;
+		confData = [
+			confId,
+			CConfBase.ConfText("S.MATK+"),
+			CConfBase.ConfControlType(CONTROL_TYPE_SELECTBOX_NUMBER),
+			CConfBase.ConfDefaultValue(0),
+			CConfBase.ConfMinValue(-500),
+			CConfBase.ConfMaxValue(500)
+		];
+		this.confDataObj[confId] = confData;
+		confId++;
 
 		//----------------------------------------------------------------
 		// データ定義数チェック
@@ -500,6 +524,8 @@ function CCharaConfCustomAtk(confArray) {
 		confDataOBJSorted[confDataOBJSorted.length] = this.confDataObj[CCharaConfCustomAtk.CONF_ID_DAMAGE_UP_PLAYER];
 		confDataOBJSorted[confDataOBJSorted.length] = this.confDataObj[CCharaConfCustomAtk.CONF_ID_GROUP_DAMAGE_UP];
 		confDataOBJSorted[confDataOBJSorted.length] = this.confDataObj[CCharaConfCustomAtk.CONF_ID_BLANK];
+		confDataOBJSorted[confDataOBJSorted.length] = this.confDataObj[CCharaConfCustomAtk.CONF_ID_PATK_PLUS];
+		confDataOBJSorted[confDataOBJSorted.length] = this.confDataObj[CCharaConfCustomAtk.CONF_ID_SMATK_PLUS];
 		this.confDataObj = confDataOBJSorted;
 
 	}
