@@ -4115,7 +4115,8 @@ g_bUnknownCasts = true;
 
 			// 基本倍率
 			// TODO:武器の種類を見て威力変更
-			wbairitu = 4000 + (700 * n_A_ActiveSkillLV);
+//			wbairitu = 4000 + (700 * n_A_ActiveSkillLV);
+			wbairitu = 2700 + (500 * n_A_ActiveSkillLV);
 							
 			// POW補正
 			wbairitu += 5 * GetTotalSpecStatus(MIG_PARAM_ID_CON);
