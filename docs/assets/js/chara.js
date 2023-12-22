@@ -755,7 +755,6 @@ function ExBuffNumSearch(exBufId) {
 	}
 
 
-
 	switch (exBufId) {
 
 	// ＨＩＴ＋

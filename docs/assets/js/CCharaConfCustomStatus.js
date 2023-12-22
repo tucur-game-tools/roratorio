@@ -411,7 +411,55 @@ function CCharaConfCustomStatus(confArray) {
 		this.confDataObj[confId] = confData;
 		confId++;
 
+		// XXX: 独自実装
 
+		CCharaConfCustomStatus.CONF_ID_POW_PLUS = confId;
+		confData = [
+			confId,
+			CConfBase.ConfText("Pow+"),
+			CConfBase.ConfControlType(CONTROL_TYPE_SELECTBOX_NUMBER),
+			CConfBase.ConfDefaultValue(0),
+			CConfBase.ConfMinValue(-200),
+			CConfBase.ConfMaxValue(200)
+		];
+		this.confDataObj[confId] = confData;
+		confId++;
+
+		CCharaConfCustomStatus.CONF_ID_SPL_PLUS = confId;
+		confData = [
+			confId,
+			CConfBase.ConfText("Spl+"),
+			CConfBase.ConfControlType(CONTROL_TYPE_SELECTBOX_NUMBER),
+			CConfBase.ConfDefaultValue(0),
+			CConfBase.ConfMinValue(-200),
+			CConfBase.ConfMaxValue(200)
+		];
+		this.confDataObj[confId] = confData;
+		confId++;
+
+		CCharaConfCustomStatus.CONF_ID_CON_PLUS = confId;
+		confData = [
+			confId,
+			CConfBase.ConfText("Con+"),
+			CConfBase.ConfControlType(CONTROL_TYPE_SELECTBOX_NUMBER),
+			CConfBase.ConfDefaultValue(0),
+			CConfBase.ConfMinValue(-200),
+			CConfBase.ConfMaxValue(200)
+		];
+		this.confDataObj[confId] = confData;
+		confId++;
+
+		CCharaConfCustomStatus.CONF_ID_CRT_PLUS = confId;
+		confData = [
+			confId,
+			CConfBase.ConfText("Crt+"),
+			CConfBase.ConfControlType(CONTROL_TYPE_SELECTBOX_NUMBER),
+			CConfBase.ConfDefaultValue(0),
+			CConfBase.ConfMinValue(-200),
+			CConfBase.ConfMaxValue(200)
+		];
+		this.confDataObj[confId] = confData;
+		confId++;
 
 		//----------------------------------------------------------------
 		// データ定義数チェック
@@ -470,6 +518,10 @@ function CCharaConfCustomStatus(confArray) {
 		confDataOBJSorted[confDataOBJSorted.length] = this.confDataObj[CCharaConfCustomStatus.CONF_ID_COST_DOWN];
 		confDataOBJSorted[confDataOBJSorted.length] = this.confDataObj[CCharaConfCustomStatus.CONF_ID_NOTICE_SIGNED];
 		confDataOBJSorted[confDataOBJSorted.length] = this.confDataObj[CCharaConfCustomStatus.CONF_ID_BLANK];
+		confDataOBJSorted[confDataOBJSorted.length] = this.confDataObj[CCharaConfCustomStatus.CONF_ID_POW_PLUS];
+		confDataOBJSorted[confDataOBJSorted.length] = this.confDataObj[CCharaConfCustomStatus.CONF_ID_SPL_PLUS];
+		confDataOBJSorted[confDataOBJSorted.length] = this.confDataObj[CCharaConfCustomStatus.CONF_ID_CON_PLUS];
+		confDataOBJSorted[confDataOBJSorted.length] = this.confDataObj[CCharaConfCustomStatus.CONF_ID_CRT_PLUS];
 		this.confDataObj = confDataOBJSorted;
 
 	}

@@ -28525,6 +28525,25 @@ function StPlusCalc() {
 	}
 
 
+	//----------------------------------------------------------------
+	// 「性能カスタマイズ」の、効果
+	//----------------------------------------------------------------
+	confval = g_objCharaConfCustomStatus.GetConf(CCharaConfCustomStatus.CONF_ID_POW_PLUS);
+	if (confval != 0) {
+		wSPC_POW += confval;
+	}
+	confval = g_objCharaConfCustomStatus.GetConf(CCharaConfCustomStatus.CONF_ID_SPL_PLUS);
+	if (confval != 0) {
+		wSPC_SPL += confval;
+	}
+	confval = g_objCharaConfCustomStatus.GetConf(CCharaConfCustomStatus.CONF_ID_CON_PLUS);
+	if (confval != 0) {
+		wSPC_CON += confval;
+	}
+	confval = g_objCharaConfCustomStatus.GetConf(CCharaConfCustomStatus.CONF_ID_CRT_PLUS);
+	if (confval != 0) {
+		wSPC_CRT += confval;
+	}
 
 	// 特性ステータス補正の保持
 	var spc4thArray = StoreSpecStatusBonusAll(wSPC_POW, wSPC_STA, wSPC_WIS, wSPC_SPL, wSPC_CON, wSPC_CRT);
@@ -28537,7 +28556,6 @@ function StPlusCalc() {
 		wSPC_STR, wSPC_AGI, wSPC_VIT, wSPC_INT, wSPC_DEX, wSPC_LUK,
 		spc4thArray[0], spc4thArray[1], spc4thArray[2], spc4thArray[3], spc4thArray[4], spc4thArray[5]
 	);
-
 
 
 
