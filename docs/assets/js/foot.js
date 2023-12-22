@@ -9431,6 +9431,10 @@ g_ITEM_SP_SKILL_CAST_TIME_value_forCalcData = w;
 			// n_tok[idx] += GetRndEnchValue(idx);
 		}
 
+		for (idx = ITEM_SP_SKILL_DELAY_DOWN; idx <= ITEM_SP_SKILL_DELAY_DOWN; idx++) {
+			n_tok[idx] = ApplySpecModify(idx, n_tok[idx]);
+		}
+
 		if(n_A_Weapon_ATKplus >= 9
 			&& (EquipNumSearch(934) || EquipNumSearch(ITEM_ID_TEGRYONG_S2)) ) {
 				n_tok[ITEM_SP_SKILL_DELAY_DOWN] += 20;
@@ -18934,6 +18938,9 @@ g_ITEM_SP_SKILL_CAST_TIME_value_forCalcData = w;
 		//----------------------------------------------------------------
 		// ランダムエンチャント効果
 		//----------------------------------------------------------------
+		for (idx = ITEM_SP_IGNORE_MDEF_ALL; idx <= ITEM_SP_IGNORE_MDEF_ALL; idx++) {
+		    n_tok[idx] = ApplySpecModify(idx, n_tok[idx]);
+		}
 		for (idx = ITEM_SP_IGNORE_MDEF_ALL; idx <= ITEM_SP_IGNORE_MDEF_RACE_ALL; idx++) {
 			n_tok[idx] += GetRndOptTotalValue(idx, null, false);
 			// n_tok[idx] += GetRndEnchValue(idx);
@@ -29936,6 +29943,11 @@ function CheckSpDefBaseLvOver(spDefRemain) {
 		break;
 	case 4:
 		if (n_A_BaseLV < 175) {
+			return -1;
+		}
+		break;	
+	case 7:
+		if (n_A_BaseLV < 250) {
 			return -1;
 		}
 		break;

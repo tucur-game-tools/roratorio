@@ -1029,8 +1029,6 @@ function ApplySpecModify(spid, spVal) {
 	var valWork = 0;
 	var arrayWork = null;
 
-
-
 	switch (spid) {
 
 	case ITEM_SP_HIT_PLUS:
@@ -1103,6 +1101,14 @@ function ApplySpecModify(spid, spVal) {
 				break;
 			}
 		}
+
+		// 「星座の印象（創造）の純粋なステータスによる効果」
+		if ((itemCount = EquipNumSearch(ITEM_ID_X_5007)) > 0) {
+			if (g_pureStatus[MIG_PARAM_ID_CRT] >= 100) {
+				spVal += 50;
+			}
+		}
+
 		break;
 
 	case ITEM_SP_MAXHP_UP:
@@ -1162,6 +1168,14 @@ function ApplySpecModify(spid, spVal) {
 		if ((bufLv = g_confDataYozi[CCharaConfYozi.CONF_ID_BOGYO_SOCHI_YUKOKA]) > 0) {
 			spVal += 300;
 		}
+
+		// 「星座の印象（体力）の純粋なステータスによる効果」
+		if ((itemCount = EquipNumSearch(ITEM_ID_X_5005)) > 0) {
+			if (g_pureStatus[MIG_PARAM_ID_STA] >= 100) {
+				spVal += 300;
+			}
+		}
+
 		break;
 
 	case ITEM_SP_MDEF_PLUS:
@@ -1170,6 +1184,14 @@ function ApplySpecModify(spid, spVal) {
 		if ((bufLv = g_confDataYozi[CCharaConfYozi.CONF_ID_CLIMAX_IMPACT]) > 0) {
 			spVal += 50;
 		}
+
+		// 「星座の印象（聡明）の純粋なステータスによる効果」
+		if ((itemCount = EquipNumSearch(ITEM_ID_X_5009)) > 0) {
+			if (g_pureStatus[MIG_PARAM_ID_WIS] >= 100) {
+				spVal += 50;
+			}
+		}
+
 		break;
 
 	case ITEM_SP_LONGRANGE_DAMAGE_UP:
@@ -1333,6 +1355,15 @@ function ApplySpecModify(spid, spVal) {
 			}
 		}
 		break;
+		
+	case ITEM_SP_SKILL_DELAY_DOWN:
+		// 「星座の印象（集中）の純粋なステータスによる効果」
+		if ((itemCount = EquipNumSearch(ITEM_ID_X_5006)) > 0) {
+			if (g_pureStatus[MIG_PARAM_ID_CON] >= 100) {
+				spVal += 15;
+			}
+		}
+		break;
 
 	case ITEM_SP_PERFECT_ATTACK_UP:
 
@@ -1340,6 +1371,13 @@ function ApplySpecModify(spid, spVal) {
 		if ((sklLv = UsedSkillSearch(SKILL_ID_CHUZITSUNA_SHINNEN)) > 0) {
 			spVal += [0, 1, 3, 5, 10, 15][sklLv];
 		}
+		// 「星座の印象（力）の純粋なステータスによる効果」
+		if ((itemCount = EquipNumSearch(ITEM_ID_X_5004)) > 0) {
+			if (g_pureStatus[MIG_PARAM_ID_POW] >= 100) {
+				spVal += 15;
+			}
+		}
+		
 		break;
 
 	case ITEM_SP_MATK_PLUS_TYPE_NOTSTUFF:
@@ -1599,24 +1637,18 @@ function ApplySpecModify(spid, spVal) {
 		}
 
 		break;
+		
+	case ITEM_SP_IGNORE_MDEF_ALL:
+		// 「星座の印象（魔力）の純粋なステータスによる効果」
+		if ((itemCount = EquipNumSearch(ITEM_ID_X_5008)) > 0) {
+			if (g_pureStatus[MIG_PARAM_ID_SPL] >= 100) {
+				spVal += 50;
+			}
+		}
+		break;
 
 	}
 
 
 	return spVal;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
