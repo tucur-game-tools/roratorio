@@ -35727,8 +35727,6 @@ function CSkillManager() {
 
 
 
-
-
 	}
 
 	// 初期化
