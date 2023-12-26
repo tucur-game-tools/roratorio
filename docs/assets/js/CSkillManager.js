@@ -36001,13 +36001,219 @@ function CSkillManager() {
 		this.dataArray[skillId] = skillData;
 		skillId++;
 
+		// ----------------------------------------------------------------
+		// スピリットマスタリー
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1225 = skillId;
+		skillData = new function() {
+		    this.prototype = new CSkillData();
+		    CSkillData.call(this);
+
+		    this.id = skillId;
+		    this.name = "スピリットマスタリー";
+		    this.kana = "スヒリツトマスタリイ";
+		    this.maxLv = 10;
+		    this.type = CSkillData.TYPE_PASSIVE;
+		    this.range = CSkillData.RANGE_SHORT;
+		    this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
+
+		// ----------------------------------------------------------------
+		// にゃん友 -鉄虎-
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1226 = skillId;
+		skillData = new function() {
+		    this.prototype = new CSkillData();
+		    CSkillData.call(this);
+
+		    this.id = skillId;
+		    this.name = "にゃん友 -鉄虎-";
+		    this.kana = "ニヤントモテトラ";
+		    this.maxLv = 1;
+		    this.type = CSkillData.TYPE_PASSIVE;
+		    this.range = CSkillData.RANGE_SHORT;
+		    this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
+
+		// ----------------------------------------------------------------
+		// にゃん友 -亀設-
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1227 = skillId;
+		skillData = new function() {
+		    this.prototype = new CSkillData();
+		    CSkillData.call(this);
+
+		    this.id = skillId;
+		    this.name = "にゃん友 -亀設-";
+		    this.kana = "ニヤントモカメ";
+		    this.maxLv = 1;
+		    this.type = CSkillData.TYPE_PASSIVE;
+		    this.range = CSkillData.RANGE_SHORT;
+		    this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
+		
+		// ----------------------------------------------------------------
+		// タートルスプリンクラー
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1228 = skillId;
+		skillData = new function() {
+		    this.prototype = new CSkillData();
+		    CSkillData.call(this);
+
+		    this.id = skillId;
+		    this.name = "タートルスプリンクラー";
+		    this.kana = "タアトルスフリンクラア";
+		    this.maxLv = 7;
+		    this.type = CSkillData.TYPE_ACTIVE;
+		    this.range = CSkillData.RANGE_SHORT;
+		    this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
+		
+		// ----------------------------------------------------------------
+		// マリンフェスティバル
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1229 = skillId;
+		skillData = new function() {
+		    this.prototype = new CSkillData();
+		    CSkillData.call(this);
+
+		    this.id = skillId;
+		    this.name = "マリンフェスティバル";
+		    this.kana = "マリンフエステイハル";
+		    this.maxLv = 5;
+		    this.type = CSkillData.TYPE_ACTIVE;
+		    this.range = CSkillData.RANGE_SHORT;
+		    this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
+		
+		// ----------------------------------------------------------------
+		// サンドフェスティバル
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1230 = skillId;
+		skillData = new function() {
+		    this.prototype = new CSkillData();
+		    CSkillData.call(this);
+
+		    this.id = skillId;
+		    this.name = "サンドフェスティバル";
+		    this.kana = "サントフエステイハル";
+		    this.maxLv = 5;
+		    this.type = CSkillData.TYPE_ACTIVE;
+		    this.range = CSkillData.RANGE_SHORT;
+		    this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
+		
+		// ----------------------------------------------------------------
+		// タートルランページ
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1231 = skillId;
+		skillData = new function() {
+		    this.prototype = new CSkillData();
+		    CSkillData.call(this);
+
+		    this.id = skillId;
+		    this.name = "タートルランページ";
+		    this.kana = "タアトルランヘエシ";
+		    this.maxLv = 7;
+		    this.type = CSkillData.TYPE_ACTIVE;
+		    this.range = CSkillData.RANGE_SHORT;
+		    this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
+
+		// ----------------------------------------------------------------
+		// にゃん友 -賢鹿-
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1232 = skillId;
+		skillData = new function() {
+		    this.prototype = new CSkillData();
+		    CSkillData.call(this);
+
+		    this.id = skillId;
+		    this.name = "にゃん友 -賢鹿-";
+		    this.kana = "ニヤントモシカ";
+		    this.maxLv = 1;
+		    this.type = CSkillData.TYPE_PASSIVE;
+		    this.range = CSkillData.RANGE_SHORT;
+		    this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
+
+		// ----------------------------------------------------------------
+		// レインボーホーン
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1233 = skillId;
+		skillData = new function() {
+		    this.prototype = new CSkillData();
+		    CSkillData.call(this);
+
+		    this.id = skillId;
+		    this.name = "レインボーホーン";
+		    this.kana = "レインホオホオン";
+		    this.maxLv = 7;
+		    this.type = CSkillData.TYPE_ACTIVE;
+		    this.range = CSkillData.RANGE_SHORT;
+		    this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
+
+		// ----------------------------------------------------------------
+		// 三霊一体
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1234 = skillId;
+		skillData = new function() {
+		    this.prototype = new CSkillData();
+		    CSkillData.call(this);
+
+		    this.id = skillId;
+		    this.name = "三霊一体";
+		    this.kana = "サンレイイツタイ";
+		    this.maxLv = 5;
+		    this.type = CSkillData.TYPE_ACTIVE;
+		    this.range = CSkillData.RANGE_SHORT;
+		    this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
+		
+		// ----------------------------------------------------------------
+		// にゃんブレッシング
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1235 = skillId;
+		skillData = new function() {
+		    this.prototype = new CSkillData();
+		    CSkillData.call(this);
+
+		    this.id = skillId;
+		    this.name = "にゃんブレッシング";
+		    this.kana = "ニヤンフレツシンク";
+		    this.maxLv = 5;
+		    this.type = CSkillData.TYPE_ACTIVE;
+		    this.range = CSkillData.RANGE_SHORT;
+		    this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
 
 
 
 
-
-
-
+		// SEARCH: END
 
 	}
 
