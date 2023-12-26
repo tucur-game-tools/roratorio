@@ -1,3 +1,4 @@
+g_baseStatus = [];
 g_pureStatus = [];
 g_bonusStatus = [];
 
@@ -180,6 +181,14 @@ function CalcStatusPoint(bIgnoreAutoCalc) {
 	g_pureStatus[MIG_PARAM_ID_SPL] = HtmlGetObjectValueByIdAsInteger("OBJID_SELECT_STATUS_SPL", 0);
 	g_pureStatus[MIG_PARAM_ID_CON] = HtmlGetObjectValueByIdAsInteger("OBJID_SELECT_STATUS_CON", 0);
 	g_pureStatus[MIG_PARAM_ID_CRT] = HtmlGetObjectValueByIdAsInteger("OBJID_SELECT_STATUS_CRT", 0);
+
+	g_baseStatus = [];
+	g_baseStatus[MIG_PARAM_ID_STR] = HtmlGetObjectValueByIdAsInteger("OBJID_SELECT_STATUS_STR", 0);
+	g_baseStatus[MIG_PARAM_ID_AGI] = HtmlGetObjectValueByIdAsInteger("OBJID_SELECT_STATUS_AGI", 0);
+	g_baseStatus[MIG_PARAM_ID_VIT] = HtmlGetObjectValueByIdAsInteger("OBJID_SELECT_STATUS_VIT", 0);
+	g_baseStatus[MIG_PARAM_ID_INT] = HtmlGetObjectValueByIdAsInteger("OBJID_SELECT_STATUS_INT", 0);
+	g_baseStatus[MIG_PARAM_ID_DEX] = HtmlGetObjectValueByIdAsInteger("OBJID_SELECT_STATUS_DEX", 0);
+	g_baseStatus[MIG_PARAM_ID_LUK] = HtmlGetObjectValueByIdAsInteger("OBJID_SELECT_STATUS_LUK", 0);
 }
 
 
@@ -1363,6 +1372,17 @@ function ApplySpecModify(spid, spVal) {
 				spVal += 30 * itemCount;
 			}
 		}
+		
+		// 「ゴブリンキング」の純粋なステータスによる効果
+		if ((cardCount = CardNumSearch(CARD_ID_X_2932)) > 0) {
+			if (g_baseStatus[MIG_PARAM_ID_LUK] >= 10) {
+				spVal += 2 * (Math.floor(g_baseStatus[MIG_PARAM_ID_LUK] / 10));
+			}
+		    if (g_baseStatus[MIG_PARAM_ID_LUK] >= 130) {
+		        spVal += 20;
+		    }
+		}
+
 		break;
 		
 	case ITEM_SP_SKILL_DELAY_DOWN:
