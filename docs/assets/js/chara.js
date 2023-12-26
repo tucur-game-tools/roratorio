@@ -6023,6 +6023,13 @@ function GetStatusModifyMaxHpUp() {
 		val += 8 * LearnedSkillSearch(SKILL_ID_INSPIRATION) * itemCount;
 	}
 
+	//----------------------------------------------------------------
+	// 「りんりんニャンカーベル」の、スキル習得による効果
+	//----------------------------------------------------------------
+	if ((itemCount = EquipNumSearch(ITEM_ID_X_5034)) > 0) {
+	    val += 3 * LearnedSkillSearch(SKILL_ID_NODOWO_NARASU);
+	}
+
 
 // 防具効果　ここまで
 //------------------------------------------------------------------------------------------------
