@@ -7,12 +7,12 @@
 * itemset.dat.js  セット効果
 * card.dat.js  カード、エンチャント効果
 * data/mig.enchlist.dat.js  アイテムエンチャント
-* ro4/hmjob.js  補正系？
-* timeitem.dat.js  アイテム時限効果？
+* timeitem.dat.js  アイテム時限効果
 * rndopt.dat.js  ランダムエンチャントのオプション
 * rndoptlist.dat.js  ランダムエンチャントのリスト
 * rndopttype.dat.js  ランダムエンチャントの種類
-
+* ro4/hmjob.js  補正系
+* chara.js  アイテム効果の適応
 
 ## アイテム基本
 
@@ -276,11 +276,6 @@ CardIdToSetIdMap[] = [];
 EquipIDと関連付け<br>
 `g_constDataManager.enchListDataManager.reverseResolveArrayItemId` にEquipIDのIndexと同じポイントに [EnchID] を入れる
 
-## 補正系
-
-アイテムの条件式が入ってる<br>
-`function ApplySpecModify`
-
 
 ## アイテム時限効果
 
@@ -302,3 +297,32 @@ EquipIDと関連付け<br>
 ## ランダムエンチャントのリスト
 
 [ID, [Slot1, Slot2, Slot3, Slot4, Slot5]]
+
+## 補正系
+
+一部効果はハードコードされている
+
+アイテムの条件式が入ってる<br>
+`function ApplySpecModify`
+
+```
+// 「星座の印象（創造）の純粋なステータスによる効果」
+if ((itemCount = EquipNumSearch(ITEM_ID_X_5007)) > 0) {
+    if (g_pureStatus[MIG_PARAM_ID_CRT] >= 100) {
+        spVal += 50;
+    }
+}
+```
+
+## アイテム効果の適応
+
+一部効果はハードコードされている
+
+```
+//----------------------------------------------------------------
+// 「りんりんニャンカーベル」の、スキル習得による効果
+//----------------------------------------------------------------
+if ((itemCount = EquipNumSearch(ITEM_ID_X_5034)) > 0) {
+    val += 3 * LearnedSkillSearch(SKILL_ID_NODOWO_NARASU);
+}
+```
