@@ -248,6 +248,7 @@ function GetLowerJobSeriesID(jobID){
 	case 44:
 	case 59:
 	case 60:
+	case MIG_JOB_ID_SHIRANUI:
 		return 44;
 
 	// ガンスリンガー系
@@ -398,6 +399,7 @@ function IsDualArmsJob(jobID) {
 	switch (jobID) {
 	case JOB_ID_KAGERO:
 	case JOB_ID_OBORO:
+	case MIG_JOB_ID_SHIRANUI:
 		return true;
 	}
 
@@ -493,6 +495,10 @@ function IsSameJobClass(jobIdTarget, jobIdCheck = n_A_JOB) {
 	case MIG_JOB_ID_NIGHTWATCH:
 		jobIdArrayCheck.push(MIG_JOB_ID_REBELLION);
 		break;
+
+	case MIG_JOB_ID_SHIRANUI:
+		jobIdArrayCheck.push(MIG_JOB_ID_OBORO);
+		break;
 	}
 
 
@@ -531,6 +537,7 @@ function GetBaseLevelMin(jobId) {
 	case MIG_JOB_ID_SOUL_ASCETIC:
 	case MIG_JOB_ID_81:
 	case MIG_JOB_ID_NIGHTWATCH:
+	case MIG_JOB_ID_SHIRANUI:
 		return 200;
 
 	case JOB_ID_RUNEKNIGHT:
@@ -592,6 +599,7 @@ function GetBaseLevelMax(jobId) {
 	case MIG_JOB_ID_SOUL_ASCETIC:
 	case MIG_JOB_ID_81:
 	case MIG_JOB_ID_NIGHTWATCH:
+	case MIG_JOB_ID_SHIRANUI:
 		return 250;
 
 	case JOB_ID_RUNEKNIGHT:
@@ -725,6 +733,7 @@ function GetJobLevelMax(jobId) {
 	case MIG_JOB_ID_SOUL_ASCETIC:
 	case MIG_JOB_ID_81:
 	case MIG_JOB_ID_NIGHTWATCH:
+	case MIG_JOB_ID_SHIRANUI:
 		return 50;
 
 	}
@@ -782,6 +791,7 @@ function GetStatusMax(jobId, bChild) {
 		case MIG_JOB_ID_SOUL_ASCETIC:
 		case MIG_JOB_ID_81:
 		case MIG_JOB_ID_NIGHTWATCH:
+		case MIG_JOB_ID_SHIRANUI:
 			return 117;
 
 		case JOB_ID_TAEGWON:
@@ -840,6 +850,7 @@ function GetStatusMax(jobId, bChild) {
 	case MIG_JOB_ID_SOUL_ASCETIC:
 	case MIG_JOB_ID_81:
 	case MIG_JOB_ID_NIGHTWATCH:
+	case MIG_JOB_ID_SHIRANUI:
 		return 130;
 
 	}
@@ -2517,7 +2528,10 @@ function GetUnconfirmedHPSPArray() {
 			[200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250],
 			[200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250],
 		];
-		
+		g_unconfirmedHPSPArray[MIG_JOB_ID_SHIRANUI] = [
+			[200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250],
+			[200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250],
+		];
 
 	}
 
