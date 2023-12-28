@@ -187,6 +187,24 @@ BaseLvが170以上の時にアップする<br>
 7005954,10,
 ```
 
+＊＊出現するモンスターに与えるダメージを実装は `head.js` に書く（２箇所）<br>
+
+ApplyMagicalSpecializeMonsterMod20211014SubSpecializeMap<br>
+ApplyPhysicalSpecializeMonster<br>
+```
+//--------------------------------
+// アルデバラン時計塔地下 未知の空間特化
+//--------------------------------
+if(NumSearch(mobData[0], MonsterGroupObj[MONSTER_GROUP_ID_CLOCK_01]) == 1){
+    if ((cardCount = CardNumSearch(CARD_ID_X_2930)) > 0) {
+        w += 30 * cardCount;
+    }
+}
+```
+
+モンスターグループは `monstergroup.dat.js` に書く<br>
+
+
 ## セット効果
 
 [SetEquipID, EquipID, EquipID, ...]<br>

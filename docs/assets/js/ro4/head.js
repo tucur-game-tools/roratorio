@@ -11168,6 +11168,15 @@ function ApplyMagicalSpecializeMonsterMod20211014SubSpecializeMap(charaData, spe
 		}
 	}
 
+	//--------------------------------
+	// アルデバラン時計塔地下 未知の空間特化
+	//--------------------------------
+	if(NumSearch(mobData[0], MonsterGroupObj[MONSTER_GROUP_ID_CLOCK_01]) == 1){
+		if ((cardCount = CardNumSearch(CARD_ID_X_2930)) > 0) {
+			w += 30 * cardCount;
+		}
+	}
+
 
 
 	//--------------------------------
@@ -21432,6 +21441,14 @@ function ApplyPhysicalSpecializeMonster(charaData, specData, mobData, dmg) {
 		}
 	}
 
+	//--------------------------------
+	// アルデバラン時計塔地下 未知の空間特化
+	//--------------------------------
+	if(NumSearch(mobData[0], MonsterGroupObj[MONSTER_GROUP_ID_CLOCK_01]) == 1){
+		if ((cardCount = CardNumSearch(CARD_ID_X_2930)) > 0) {
+			w += 30 * cardCount;
+		}
+	}
 
 
 	//--------------------------------
