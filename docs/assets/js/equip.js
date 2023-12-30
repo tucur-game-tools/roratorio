@@ -151,6 +151,19 @@ function OnChangeJobSelect(jobId){
 	}
 }
 
+/**
+ * XXX: 独自実装
+ */
+function OnClickDisableOldItem(ev) {
+	if (confirm("装備欄がリセットされますがよいですか？") == false) {
+		ev.preventDefault();
+	}
+}
+function OnRebuildEquip() {
+	OnChangeArmsTypeLeft(ITEM_KIND_NONE);
+	OnChangeArmsTypeRight(ITEM_KIND_NONE);
+	RebuildArmorsSelect();
+}
 
 
 /************************************************************************************************
@@ -179,7 +192,6 @@ function OnChangeArmsTypeRight(itemKind){
 	// 武器種別の設定
 	HtmlSetObjectValueById("OBJID_ARMS_TYPE_RIGHT", itemKind);
 	n_A_WeaponType = itemKind;
-
 
 
 	// 矢リストを再構築する
@@ -352,6 +364,7 @@ function OnChangeArmsTypeRight(itemKind){
 function RebuildArmsRightSelect() {
 
 	var idx = 0;
+	var itemExpData = null;
 	var itemId = 0;
 	var itemName = "";
 	var ItemIdArrayEquipable = new Array();
@@ -392,6 +405,9 @@ function RebuildArmsRightSelect() {
 	// アイテムセレクトボックスを取得
 	objSelect = document.getElementById("OBJID_ARMS_RIGHT");
 
+	// XXX: 独自実装
+	objDisableItemFlag = document.getElementById("OBJID_DISABLE_OLD_ITEM").checked;
+
 	// セレクトボックスの要素を全削除
 	HtmlRemoveOptionAll(objSelect);
 
@@ -400,6 +416,11 @@ function RebuildArmsRightSelect() {
 
 		// アイテム ID を取得
 		itemId = ItemIdArrayEquipable[idx];
+
+		// XXX: 独自実装 {
+		itemExpData = ItemExpObj[itemId];
+		if (objDisableItemFlag && itemExpData[ITEM_EXP_INDEX_DISABLE_FLAG]) continue;
+		// }
 
 		HtmlCreateElementOption(itemId, GetFlagAppendedItemName(itemId), objSelect);
 	}
@@ -699,11 +720,20 @@ function RebuildArmsLeftSelect() {
 	//--------------------------------
 	var idx = 0;
 	var itemData = null;
+	var itemExpData = null;
+
+	// XXX: 独自実装
+	objDisableItemFlag = document.getElementById("OBJID_DISABLE_OLD_ITEM").checked;
 
 	for (idx = 0; idx < equipableItemArray.length; idx++) {
 
 		// アイテムデータの取得
 		itemData = ItemObjNew[equipableItemArray[idx]];
+
+		// XXX: 独自実装 {
+		itemExpData = ItemExpObj[itemData[0]];
+		if (objDisableItemFlag && itemExpData[ITEM_EXP_INDEX_DISABLE_FLAG]) continue;
+		// }
 
 		// 選択項目の追加
 		objLeft.options[objLeft.options.length] =
@@ -1345,6 +1375,7 @@ function RebuildArmorsSelect() {
 	var idxItem = 0;
 
 	var itemData = null;
+	var itemExpData = null;
 	var itemId = 0;
 	var itemKind = 0;
 	var itemName = "";
@@ -1372,6 +1403,8 @@ function RebuildArmorsSelect() {
 	objSelectArray[EQUIP_REGION_ID_ACCESSARY_1] = document.getElementById("OBJID_ACCESSARY_1");
 	objSelectArray[EQUIP_REGION_ID_ACCESSARY_2] = document.getElementById("OBJID_ACCESSARY_2");
 
+	// XXX: 独自実装
+	objDisableItemFlag = document.getElementById("OBJID_DISABLE_OLD_ITEM").checked;
 
 	// セレクトボックスの要素を全削除
 	for (idx = EQUIP_REGION_ID_HEAD_TOP; idx <= EQUIP_REGION_ID_ACCESSARY_2; idx++) {
@@ -1386,6 +1419,11 @@ function RebuildArmorsSelect() {
 		itemData = ItemObjNew[idx];
 		itemId = itemData[ITEM_DATA_INDEX_ID];
 		itemKind = itemData[ITEM_DATA_INDEX_KIND];
+		
+		// XXX: 独自実装 {
+		itemExpData = ItemExpObj[idx];
+		if (objDisableItemFlag && itemExpData[ITEM_EXP_INDEX_DISABLE_FLAG]) continue;
+		// }
 
 		// 装備可能判定
 

@@ -48,6 +48,7 @@
     <script type="text/javascript" src="/roratorio/assets/js/monstermap.h.js"></script>
     <script type="text/javascript" src="/roratorio/assets/js/monstermap.dat.js"></script>
     <script type="text/javascript" src="/roratorio/assets/js/item.h.js"></script>
+    <script type="text/javascript" src="/roratorio/assets/js/data/item.exp.dat.js"></script>
     <script type="text/javascript" src="/roratorio/assets/js/item.dat.js"></script>
     <script type="text/javascript" src="/roratorio/assets/js/arrow.h.js"></script>
     <script type="text/javascript" src="/roratorio/assets/js/arrow.dat.js"></script>
@@ -489,6 +490,11 @@
                             <tbody>
                                 <tr>
                                     <td>
+                                        <!-- XXX: 独自実装 { -->
+                                        <sapan>旧装備の非表示：</span>
+                                        <input type="checkbox" id="OBJID_DISABLE_OLD_ITEM" checked onclick="OnClickDisableOldItem(event)" onchange="OnRebuildEquip()">
+                                        <br>
+                                        <!-- } -->
                                         <span id="nm026">スピードポーション：</span>
                                         <select id="OBJID_SPEED_POT" name = "A_SpeedPOT" onChange = "StAllCalc()">
                                         </select>
