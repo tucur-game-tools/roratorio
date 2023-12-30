@@ -364,6 +364,7 @@ function OnChangeArmsTypeRight(itemKind){
 function RebuildArmsRightSelect() {
 
 	var idx = 0;
+	var itemExpData = null;
 	var itemId = 0;
 	var itemName = "";
 	var ItemIdArrayEquipable = new Array();
