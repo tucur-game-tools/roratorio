@@ -194,7 +194,6 @@ function OnChangeArmsTypeRight(itemKind){
 	n_A_WeaponType = itemKind;
 
 
-
 	// 矢リストを再構築する
 	for (idx = 0; idx < ArrowOBJNew.length; idx++) {
 
@@ -405,6 +404,9 @@ function RebuildArmsRightSelect() {
 	// アイテムセレクトボックスを取得
 	objSelect = document.getElementById("OBJID_ARMS_RIGHT");
 
+	// XXX: 独自実装
+	objDisableItemFlag = document.getElementById("OBJID_DISABLE_OLD_ITEM").checked;
+
 	// セレクトボックスの要素を全削除
 	HtmlRemoveOptionAll(objSelect);
 
@@ -413,6 +415,11 @@ function RebuildArmsRightSelect() {
 
 		// アイテム ID を取得
 		itemId = ItemIdArrayEquipable[idx];
+
+		// XXX: 独自実装 {
+		itemExpData = ItemExpObj[itemId];
+		if (objDisableItemFlag && itemExpData[ITEM_EXP_INDEX_DISABLE_FLAG]) continue;
+		// }
 
 		HtmlCreateElementOption(itemId, GetFlagAppendedItemName(itemId), objSelect);
 	}
@@ -712,11 +719,20 @@ function RebuildArmsLeftSelect() {
 	//--------------------------------
 	var idx = 0;
 	var itemData = null;
+	var itemExpData = null;
+
+	// XXX: 独自実装
+	objDisableItemFlag = document.getElementById("OBJID_DISABLE_OLD_ITEM").checked;
 
 	for (idx = 0; idx < equipableItemArray.length; idx++) {
 
 		// アイテムデータの取得
 		itemData = ItemObjNew[equipableItemArray[idx]];
+
+		// XXX: 独自実装 {
+		itemExpData = ItemExpObj[itemData[0]];
+		if (objDisableItemFlag && itemExpData[ITEM_EXP_INDEX_DISABLE_FLAG]) continue;
+		// }
 
 		// 選択項目の追加
 		objLeft.options[objLeft.options.length] =
@@ -1358,6 +1374,7 @@ function RebuildArmorsSelect() {
 	var idxItem = 0;
 
 	var itemData = null;
+	var itemExpData = null;
 	var itemId = 0;
 	var itemKind = 0;
 	var itemName = "";
