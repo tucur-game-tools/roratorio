@@ -151,6 +151,19 @@ function OnChangeJobSelect(jobId){
 	}
 }
 
+/**
+ * XXX: 独自実装
+ */
+function OnClickDisableOldItem(ev) {
+	if (confirm("装備欄がリセットされますがよいですか？") == false) {
+		ev.preventDefault();
+	}
+}
+function OnRebuildEquip() {
+	OnChangeArmsTypeLeft(ITEM_KIND_NONE);
+	OnChangeArmsTypeRight(ITEM_KIND_NONE);
+	RebuildArmorsSelect();
+}
 
 
 /************************************************************************************************
@@ -1372,6 +1385,8 @@ function RebuildArmorsSelect() {
 	objSelectArray[EQUIP_REGION_ID_ACCESSARY_1] = document.getElementById("OBJID_ACCESSARY_1");
 	objSelectArray[EQUIP_REGION_ID_ACCESSARY_2] = document.getElementById("OBJID_ACCESSARY_2");
 
+	// XXX: 独自実装
+	objDisableItemFlag = document.getElementById("OBJID_DISABLE_OLD_ITEM").checked;
 
 	// セレクトボックスの要素を全削除
 	for (idx = EQUIP_REGION_ID_HEAD_TOP; idx <= EQUIP_REGION_ID_ACCESSARY_2; idx++) {
@@ -1386,6 +1401,11 @@ function RebuildArmorsSelect() {
 		itemData = ItemObjNew[idx];
 		itemId = itemData[ITEM_DATA_INDEX_ID];
 		itemKind = itemData[ITEM_DATA_INDEX_KIND];
+		
+		// XXX: 独自実装 {
+		itemExpData = ItemExpObj[idx];
+		if (objDisableItemFlag && itemExpData[ITEM_EXP_INDEX_DISABLE_FLAG]) continue;
+		// }
 
 		// 装備可能判定
 

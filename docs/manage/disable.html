@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="robots" content="noindex">
+    <meta charset="UTF-8">
+
+    <title>ItemExpDataのデータ生成ページ</title>
+    
+    <script src="/roratorio/assets/js/item.dat.js"></script>
+    <script src="/roratorio/assets/js/data/item.exp.dat.js"></script>
+
+    <style>
+        body {
+            margin:0;
+        }
+        header {
+            position: fixed;
+            width: 100%;
+            background: #99aecc;
+            border-bottom: 1px solid #333;
+            padding: 6px;
+        }
+        header h1 {
+            padding: 0;
+            margin: 0;
+        }
+        header div {
+            text-align: right;
+            padding-right: 12px;
+        }
+        .spacer {
+            height: 95px;
+            background: #000;
+        }
+        .line {
+            padding: 6px 0;
+            border-bottom: 1px solid #333;
+        }
+        .line label {
+            display: block;
+        }
+        textarea {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>ItemExpDataのデータ生成</h1>
+        <div>
+            <button style="width:100px;" onclick="showScript();">出力</button>
+        </div>
+    </header>
+    <div class="spacer"></div>
+    <div id="editor"></div>
+</body>
+<script>
+(function () {
+    var editor = document.getElementById('editor');
+    for (var i = 0; i < ItemObjNew.length; i++) {
+        var itemData    = ItemObjNew[i];
+        var itemExpData = ItemExpObj[i];
+
+        if (itemData[1] == 100) continue;
+
+        editor.appendChild(createEditBox(i, itemData[8], itemExpData[0]));
+    }
+})();
+
+function createEditBox(index, name, flag) {
+    var base = document.createElement('div');
+    base.className = "line";
+    base.innerHTML = `<label><input type="checkbox" id="chk_${index}" value="${index}" ${flag ? '' : 'checked'} onchange="replaceExpData(${index}, 0, !this.checked);"><span>${name}</span></label>`;
+    return base;
+}
+
+function replaceExpData(index, expIndex, value) {
+    ItemExpObj[index][expIndex] = value;
+}
+
+function showScript() {
+    var textarea = document.createElement('textarea');
+    var text = 'ItemExpObj = [\n';
+    for (var i = 0; i < ItemObjNew.length; i++) {
+        var itemData = ItemObjNew[i];
+        var itemExpData = ItemExpObj[i];
+        
+        text += `    [${itemExpData[0]}], // ${i}: ${itemData[8]}\n`;
+    }
+    text += '];\n';
+    textarea.value = text;
+
+    var editor = document.getElementById('editor');
+    var clone = editor.cloneNode(false);
+    clone.appendChild(textarea);
+
+    editor.parentNode.replaceChild(clone, editor);
+}
+</script>
+</html>    
