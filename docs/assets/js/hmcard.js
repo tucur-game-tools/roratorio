@@ -1139,6 +1139,8 @@ function BuildUpCardSlotsMIG(eqpRgnId, itemId, enchInfoArray, objArySlots) {
 	var objSelectGroup = null;
 	var objSelect = null;
 
+	// XXX: 独自実装
+	objDisableItemFlag = document.getElementById("OBJID_DISABLE_OLD_ITEM").checked;
 
 	// スロット配列分ループ
 	for (idxSlot = 0; idxSlot < objArySlots.length; idxSlot++) {
@@ -1308,6 +1310,11 @@ function BuildUpCardSlotsMIG(eqpRgnId, itemId, enchInfoArray, objArySlots) {
 		for (idx = 0; idx < cardSortObjTarget.length; idx++) {
 			cardId = cardSortObjTarget[idx];
 			cardName = GetFlagAppendedCardName(cardId);
+
+			// XXX: 独自実装 {
+			cardExpData = CardExpObj[cardId];
+			if (objDisableItemFlag && cardExpData[ITEM_EXP_INDEX_DISABLE_FLAG]) continue;
+			// }
 
 			HtmlCreateElementOption(cardId, cardName, objSelect);
 		}
