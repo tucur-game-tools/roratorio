@@ -1487,6 +1487,32 @@ function ApplySpecModify(spid, spVal) {
 
 	case ITEM_SP_P_ATK_PLUS:
 
+		// 「スピリットハンドラー」スキル「スピリットマスタリー」習得による効果
+		if ((sklLv = UsedSkillSearch(SKILL_ID_X_1225)) > 0) {
+			switch (sklLv) {
+				case 8:
+				spVal += 9;
+				break;
+				case 9:
+				spVal += 12;
+				break;
+				case 10:
+				spVal += 15;
+				break;
+				default:
+				spVal += sklLv;
+				break;
+			}
+		}
+		// 「スピリットハンドラー」スキル「三霊一体」による効果
+		if ((sklLv = UsedSkillSearch(SKILL_ID_X_1234)) > 0) {
+			spVal += 3 * sklLv;
+		}
+		// 「スピリットハンドラー」スキル「にゃんブレッシング」による効果
+		if ((bufLv = g_confDataYozi[CCharaConfYozi.CONF_ID_NYAN_BLESSING]) > 0) {
+			spVal += 5 * bufLv;
+		}
+
 		// 「未知なる力のブーツ」の純粋なステータスによる効果
 		if ((itemCount = EquipNumSearch(ITEM_ID_MICHINARU_CHIKARANO_BOOTS)) > 0) {
 			if (g_pureStatus[MIG_PARAM_ID_POW] >= 100) {
@@ -1496,6 +1522,32 @@ function ApplySpecModify(spid, spVal) {
 		break;
 
 	case ITEM_SP_S_MATK_PLUS:
+	
+		// 「スピリットハンドラー」スキル「スピリットマスタリー」習得による効果
+		if ((sklLv = UsedSkillSearch(SKILL_ID_X_1225)) > 0) {
+			switch (sklLv) {
+				case 8:
+				spVal += 9;
+				break;
+				case 9:
+				spVal += 12;
+				break;
+				case 10:
+				spVal += 15;
+				break;
+				default:
+				spVal += sklLv;
+				break;
+			}
+		}
+		// 「スピリットハンドラー」スキル「三霊一体」による効果
+		if ((sklLv = UsedSkillSearch(SKILL_ID_X_1234)) > 0) {
+			spVal += 3 * sklLv;
+		}
+		// 「スピリットハンドラー」スキル「にゃんブレッシング」による効果
+		if ((bufLv = g_confDataYozi[CCharaConfYozi.CONF_ID_NYAN_BLESSING]) > 0) {
+			spVal += 5 * bufLv;
+		}
 
 		// 「未知なる魔力のブーツ」の純粋なステータスによる効果
 		if ((itemCount = EquipNumSearch(ITEM_ID_MICHINARU_MARYOKUNO_BOOTS)) > 0) {
@@ -1503,6 +1555,14 @@ function ApplySpecModify(spid, spVal) {
 				spVal += 5 * itemCount;
 			}
 		}
+		break;
+
+	case ITEM_SP_H_PLUS_PLUS: // TODO: 未対応
+		// 「スピリットハンドラー」スキル「三霊一体」による効果
+		if ((sklLv = UsedSkillSearch(SKILL_ID_X_1234)) > 0) {
+			spVal += 3 * sklLv;
+		}
+
 		break;
 
 	case ITEM_SP_MAGICAL_DAMAGE_UP_RACE_SOLID:

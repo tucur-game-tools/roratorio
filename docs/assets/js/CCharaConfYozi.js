@@ -262,7 +262,18 @@ function CCharaConfYozi(confArray) {
 		this.confDataObj[confId] = confData;
 		confId++;
 
-
+		// XXX: 独自実装
+		CCharaConfYozi.CONF_ID_NYAN_BLESSING = confId;
+		confData = [
+			confId,
+			CConfBase.ConfText("にゃんブレッシング"),
+			CConfBase.ConfControlType(CONTROL_TYPE_SELECTBOX_NUMBER),
+			CConfBase.ConfDefaultValue(0),
+			CConfBase.ConfMinValue(0),
+			CConfBase.ConfMaxValue(5)
+		];
+		this.confDataObj[confId] = confData;
+		confId++;
 
 
 
@@ -326,6 +337,7 @@ function CCharaConfYozi(confArray) {
 		confDataOBJSorted[confDataOBJSorted.length] = this.confDataObj[CCharaConfYozi.CONF_ID_HOSHI_FU];
 		confDataOBJSorted[confDataOBJSorted.length] = this.confDataObj[CCharaConfYozi.CONF_ID_GOGYO_FU];
 		confDataOBJSorted[confDataOBJSorted.length] = this.confDataObj[CCharaConfYozi.CONF_ID_TENCHI_SHINRE];
+		confDataOBJSorted[confDataOBJSorted.length] = this.confDataObj[CCharaConfYozi.CONF_ID_NYAN_BLESSING];
 		this.confDataObj = confDataOBJSorted;
 
 	}

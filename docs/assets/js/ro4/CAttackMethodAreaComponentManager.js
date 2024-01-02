@@ -3334,8 +3334,26 @@ CAttackMethodAreaComponentManager.GetEffectiveAttackMethodDataArraySubExtractOpt
 				],
 				5
 			);
-			break;
 
+			// スピリットハンドラーではない場合、レインボーホーンを選択させない
+			if (!IsSameJobClass(MIG_JOB_ID_81)) {
+				break;
+			}
+			// オプションリストを生成、追加
+			attackMethodOptList = funcCreateOptionList(attackMethodOptList,
+				"レインボーホーン",
+				[
+					[ELM_ID_VANITY,	"なし"],
+					[ELM_ID_WATER,	"Lv1:水属性"],
+					[ELM_ID_WIND,	"Lv2:風属性"],
+					[ELM_ID_EARTH,	"Lv3:地属性"],
+					[ELM_ID_FIRE,	"Lv4:火属性"],
+					[ELM_ID_DARK,	"Lv5:闇属性"],
+					[ELM_ID_HOLY,	"Lv6:聖属性"],
+				],
+				0
+			);
+			break;
 
 		//----------------------------------------------------------------
 		// サモナー：ピッキ突き
@@ -3590,6 +3608,26 @@ CAttackMethodAreaComponentManager.GetEffectiveAttackMethodDataArraySubExtractOpt
 			);
 			break;
 
+		//----------------------------------------------------------------
+		// サモナー：ディアーブリーズ, ディアーキャノン
+		//----------------------------------------------------------------
+		case SKILL_ID_X_1208:
+		case SKILL_ID_X_1209:
+			// オプションリストを生成、追加
+			attackMethodOptList = funcCreateOptionList(attackMethodOptList,
+				"レインボーホーン",
+				[
+					[ELM_ID_VANITY,	"なし"],
+					[ELM_ID_WATER,	"Lv1:水属性"],
+					[ELM_ID_WIND,	"Lv2:風属性"],
+					[ELM_ID_EARTH,	"Lv3:地属性"],
+					[ELM_ID_FIRE,	"Lv4:火属性"],
+					[ELM_ID_DARK,	"Lv5:闇属性"],
+					[ELM_ID_HOLY,	"Lv6:聖属性"],
+				],
+				0
+			);
+			break;
 		}
 
 	}
@@ -3691,6 +3729,3 @@ CAttackMethodAreaComponentManager.CreateNoticeBlock = function () {
 // 初期構築処理
 // TODO: 現状、呼び出しに任せる
 // CAttackMethodAreaComponentManager.RebuildControls();
-
-
-
