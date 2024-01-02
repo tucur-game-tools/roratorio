@@ -4046,7 +4046,10 @@ g_bUnknownCasts = true;
 
 			// 基本倍率
 			wbairitu = 2050 + (350 * n_A_ActiveSkillLV);
-					
+			if (UsedSkillSearch(SKILL_ID_X_1226) > 0) {
+				wbairitu = 2850 + (450 * n_A_ActiveSkillLV);
+			}
+
 			// POW補正
 			wbairitu += 5 * GetTotalSpecStatus(MIG_PARAM_ID_POW);
 
@@ -4063,7 +4066,10 @@ g_bUnknownCasts = true;
 
 			// 基本倍率
 			wbairitu = 1600 + (200 * n_A_ActiveSkillLV);
-						
+			if (UsedSkillSearch(SKILL_ID_X_1226) > 0) {
+				wbairitu = 2400 + (300 * n_A_ActiveSkillLV);
+			}
+
 			// POW補正
 			wbairitu += 5 * GetTotalSpecStatus(MIG_PARAM_ID_POW);
 
@@ -4080,7 +4086,10 @@ g_bUnknownCasts = true;
 
 			// 基本倍率
 			wbairitu = 300 + (100 * n_A_ActiveSkillLV);
-						
+			if (UsedSkillSearch(SKILL_ID_X_1226) > 0) {
+				wbairitu = 450 + (150 * n_A_ActiveSkillLV);
+			}
+
 			// POW補正
 			wbairitu += 5 * GetTotalSpecStatus(MIG_PARAM_ID_POW);
 
@@ -8227,7 +8236,7 @@ else {
 		case SKILL_ID_INUHAKKA_METEOR:
 			wActiveHitNum = 7;
 
-			n_A_Weapon_zokusei = ELM_ID_VANITY;
+			n_A_Weapon_zokusei = attackMethodConfArray[0].GetOptionValue(1);
 
 			wbairitu = 700;
 			wHITsuu = attackMethodConfArray[0].GetOptionValue(0) / 2;
@@ -9821,13 +9830,18 @@ g_bUnknownCasts = true;
 			// TODO: 詠唱時間等未実測スキル
 			g_bUnknownCasts = true;
 
-			n_A_Weapon_zokusei = eval(document.calcForm.A_Weapon_zokusei.value);
+			wActiveHitNum = 10;
+
+			n_A_Weapon_zokusei = attackMethodConfArray[0].GetOptionValue(1);
 //			wCast = 100 * n_A_ActiveSkillLV;
 //			n_KoteiCast = 100 * n_A_ActiveSkillLV;
 
 			// 基本倍率
 			wbairitu = 800 + (100 * n_A_ActiveSkillLV);
-			
+			if (UsedSkillSearch(SKILL_ID_X_1232) > 0) {
+				wbairitu = 1600 + (200 * n_A_ActiveSkillLV);
+			}
+
 			// SPL補正
 			wbairitu += 5 * GetTotalSpecStatus(MIG_PARAM_ID_SPL);
 
@@ -9840,13 +9854,16 @@ g_bUnknownCasts = true;
 			// TODO: 詠唱時間等未実測スキル
 			g_bUnknownCasts = true;
 
-			n_A_Weapon_zokusei = eval(document.calcForm.A_Weapon_zokusei.value);
+			n_A_Weapon_zokusei = attackMethodConfArray[0].GetOptionValue(1);
 //			wCast = 100 * n_A_ActiveSkillLV;
 //			n_KoteiCast = 100 * n_A_ActiveSkillLV;
 
 			// 基本倍率
 			wbairitu = 2400 + (300 * n_A_ActiveSkillLV);
-				
+			if (UsedSkillSearch(SKILL_ID_X_1232) > 0) {
+				wbairitu = 4800 + (600 * n_A_ActiveSkillLV);
+			}
+
 			// SPL補正
 			wbairitu += 5 * GetTotalSpecStatus(MIG_PARAM_ID_SPL);
 
