@@ -2542,6 +2542,13 @@
 		[-2925,-2924,-1245], // 2520
 		[-2927,-2926,4877],
 		[-2933,-2932,-2043],
+		[5075,5074,-2043],
+		[-2935,-2934,-1348],
+		[-2937,-2936,-1348],
+		[-2939,-2938,-1245],
+		[4237,4235,-10091], // 2527
+		[4236,4235,-10092],
+		[4238,4235,-10093],
 	];
 	
 	// SEARCH: END
@@ -3935,6 +3942,8 @@
 	ItemIdToSetIdMap[5025] = [2512,2513];
 	ItemIdToSetIdMap[5028] = [2514,2515];
 	ItemIdToSetIdMap[5030] = [2516];
+	ItemIdToSetIdMap[5074] = [2523];
+	
 
 	// SEARCH: END ITEM
 	/*
@@ -4880,6 +4889,9 @@
 	CardIdToSetIdMap[2924] = [2520];
 	CardIdToSetIdMap[2926] = [2521];
 	CardIdToSetIdMap[2932] = [2522];
+	CardIdToSetIdMap[2934] = [2524];
+	CardIdToSetIdMap[2936] = [2525];
+	CardIdToSetIdMap[2938] = [2526];
 
 	// SEARCH: END CARD
 /*
@@ -4923,5 +4935,8 @@
 	PetIdToSetIdMap[88] = [1582];
 	PetIdToSetIdMap[89] = [1564];
 	PetIdToSetIdMap[90] = [1570];
+	PetIdToSetIdMap[91] = [2527];
+	PetIdToSetIdMap[92] = [2528];
+	PetIdToSetIdMap[93] = [2529];
 
 })();

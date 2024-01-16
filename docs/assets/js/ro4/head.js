@@ -4391,6 +4391,60 @@ g_bUnknownCasts = true;
 			wbairitu += 5 * GetTotalSpecStatus(MIG_PARAM_ID_POW);
 			wbairitu *= n_A_BaseLV / 100;
 			break;
+		
+		case SKILL_ID_X_1270:
+			// TODO: 詠唱時間等未実測スキル
+			g_bUnknownCasts = true;
+			n_A_Weapon_zokusei = eval(document.calcForm.A_Weapon_zokusei.value);
+			wbairitu = 1000 + (200 * n_A_ActiveSkillLV);
+			wbairitu += 5 * GetTotalSpecStatus(MIG_PARAM_ID_POW);
+			wbairitu *= n_A_BaseLV / 100;
+			break;
+		
+		case SKILL_ID_X_1271:
+			// TODO: 詠唱時間等未実測スキル
+			g_bUnknownCasts = true;
+			n_A_Weapon_zokusei = eval(document.calcForm.A_Weapon_zokusei.value);
+			wbairitu = 3000 + (300 * n_A_ActiveSkillLV);
+			wbairitu += 5 * GetTotalSpecStatus(MIG_PARAM_ID_POW);
+			wbairitu *= n_A_BaseLV / 100;
+			break;
+		
+		case SKILL_ID_X_1272:
+			// TODO: 詠唱時間等未実測スキル
+			g_bUnknownCasts = true;
+			n_A_Weapon_zokusei = eval(document.calcForm.A_Weapon_zokusei.value);
+			wbairitu = 1100 + (200 * n_A_ActiveSkillLV);
+			wbairitu += 5 * GetTotalSpecStatus(MIG_PARAM_ID_POW);
+			wbairitu *= n_A_BaseLV / 100;
+			break;
+		
+		case SKILL_ID_X_1273:
+			// TODO: 詠唱時間等未実測スキル
+			g_bUnknownCasts = true;
+			n_A_Weapon_zokusei = eval(document.calcForm.A_Weapon_zokusei.value);
+			wbairitu = 1500 + (150 * n_A_ActiveSkillLV);
+			wbairitu += 5 * GetTotalSpecStatus(MIG_PARAM_ID_POW);
+			wbairitu *= n_A_BaseLV / 100;
+			break;
+		
+		case SKILL_ID_X_1274:
+			// TODO: 詠唱時間等未実測スキル
+			g_bUnknownCasts = true;
+			n_A_Weapon_zokusei = eval(document.calcForm.A_Weapon_zokusei.value);
+			wbairitu = 1900 + (400 * n_A_ActiveSkillLV);
+			wbairitu += 5 * GetTotalSpecStatus(MIG_PARAM_ID_POW);
+			wbairitu *= n_A_BaseLV / 100;
+			break;
+		
+		case SKILL_ID_X_1275:
+			// TODO: 詠唱時間等未実測スキル
+			g_bUnknownCasts = true;
+			n_A_Weapon_zokusei = eval(document.calcForm.A_Weapon_zokusei.value);
+			wbairitu = 2000 + (100 * n_A_ActiveSkillLV);
+			wbairitu += 5 * GetTotalSpecStatus(MIG_PARAM_ID_POW);
+			wbairitu *= n_A_BaseLV / 100;
+			break;
 		//
 
 
