@@ -36872,6 +36872,120 @@ function CSkillManager() {
 		this.dataArray[skillId] = skillData;
 		skillId++;
 
+		// ----------------------------------------------------------------
+		// ドラゴニックブレス
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1270 = skillId;
+		skillData = new function() {
+		    this.prototype = new CSkillData();
+		    CSkillData.call(this);
+
+		    this.id = skillId;
+		    this.name = "ドラゴニックブレス";
+		    this.kana = "トラコニツクフレス";
+		    this.maxLv = 10;
+		    this.type = CSkillData.TYPE_ACTIVE | CSkillData.TYPE_PHYSICAL;
+		    this.range = CSkillData.RANGE_LONG;
+		    this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
+
+		// ----------------------------------------------------------------
+		// スパークブラスター
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1271 = skillId;
+		skillData = new function() {
+		    this.prototype = new CSkillData();
+		    CSkillData.call(this);
+
+		    this.id = skillId;
+		    this.name = "スパークブラスター";
+		    this.kana = "スハアクフラスタア";
+		    this.maxLv = 10;
+		    this.type = CSkillData.TYPE_ACTIVE | CSkillData.TYPE_PHYSICAL;
+		    this.range = CSkillData.RANGE_LONG;
+		    this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
+		
+		// ----------------------------------------------------------------
+		// トリプルレーザー
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1272 = skillId;
+		skillData = new function() {
+			this.prototype = new CSkillData();
+			CSkillData.call(this);
+
+			this.id = skillId;
+			this.name = "トリプルレーザー";
+			this.kana = "トリフルレエサア";
+			this.maxLv = 5;
+			this.type = CSkillData.TYPE_ACTIVE | CSkillData.TYPE_PHYSICAL;
+			this.range = CSkillData.RANGE_LONG;
+			this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
+		
+		// ----------------------------------------------------------------
+		// マイティスマッシュ
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1273 = skillId;
+		skillData = new function() {
+			this.prototype = new CSkillData();
+			CSkillData.call(this);
+
+			this.id = skillId;
+			this.name = "マイティスマッシュ";
+			this.kana = "マイテイスマツシユ";
+			this.maxLv = 10;
+			this.type = CSkillData.TYPE_ACTIVE | CSkillData.TYPE_PHYSICAL;
+			this.range = CSkillData.RANGE_SHORT;
+			this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
+
+		// ----------------------------------------------------------------
+		// エクスプロッシブパウダー
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1274 = skillId;
+		skillData = new function() {
+		    this.prototype = new CSkillData();
+		    CSkillData.call(this);
+
+		    this.id = skillId;
+		    this.name = "エクスプロッシブパウダー";
+		    this.kana = "エクスフロツシフハウタア";
+		    this.maxLv = 5;
+		    this.type = CSkillData.TYPE_ACTIVE | CSkillData.TYPE_PHYSICAL;
+		    this.range = CSkillData.RANGE_SHORT;
+		    this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
+
+		// ----------------------------------------------------------------
+		// メイヘミックソーンズ
+		// ----------------------------------------------------------------
+		SKILL_ID_X_1275 = skillId;
+		skillData = new function() {
+		    this.prototype = new CSkillData();
+		    CSkillData.call(this);
+
+		    this.id = skillId;
+		    this.name = "メイヘミックソーンズ";
+		    this.kana = "メイヘミツクソオンス";
+		    this.maxLv = 10;
+		    this.type = CSkillData.TYPE_ACTIVE | CSkillData.TYPE_PHYSICAL;
+		    this.range = CSkillData.RANGE_LONG;
+		    this.element = CSkillData.ELEMENT_VOID;
+		};
+		this.dataArray[skillId] = skillData;
+		skillId++;
+
 
 		// SEARCH: END
 
