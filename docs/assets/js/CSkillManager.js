@@ -28548,10 +28548,6 @@ function CSkillManager() {
 				return -1;
 			}
 
-			this.dispHitCount = function(skillLv, charaDataManger) {
-				return 7;
-			}
-
 			this.CastTimeVary = function(skillLv, charaDataManger) {
 				return 2000;
 			}

@@ -8288,11 +8288,12 @@ else {
 			break;
 
 		case SKILL_ID_INUHAKKA_METEOR:
-			wActiveHitNum = 7;
-
 			n_A_Weapon_zokusei = attackMethodConfArray[0].GetOptionValue(1);
 
-			wbairitu = 700;
+			wbairitu = 400;
+			if (n_A_BaseLV >= 100) {
+				wbairitu += n_A_BaseLV / 100;
+			}
 			wHITsuu = attackMethodConfArray[0].GetOptionValue(0) / 2;
 			wCast = 2000;
 			n_Delay[2] = 3000;
