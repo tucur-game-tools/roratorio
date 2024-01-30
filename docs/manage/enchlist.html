@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="robots" content="noindex">
+    <meta charset="UTF-8">
+
+    <title>EnchListDataのデータ生成ページ</title>
+
+    <script>
+    var g_constDataManager = {};
+    g_constDataManager.enchListDataManager = {};
+    </script>
+
+    <script src="/roratorio/assets/js/item.dat.js"></script>
+    <script src="/roratorio/assets/js/data/mig.enchlist.dat.js"></script>
+
+    <style>
+        body {
+            margin:0;
+        }
+        header {
+            position: fixed;
+            width: 100%;
+            background: #99aecc;
+            border-bottom: 1px solid #333;
+            padding: 6px;
+        }
+        header h1 {
+            padding: 0;
+            margin: 0;
+        }
+        header div {
+            text-align: right;
+            padding-right: 12px;
+        }
+        .spacer {
+            height: 95px;
+            background: #000;
+        }
+        .line {
+            padding: 6px 0;
+            border-bottom: 1px solid #333;
+        }
+        .line label {
+            display: block;
+        }
+        .line input {
+            margin:0 6px;
+        }
+        textarea {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>EnchListDataのデータ生成</h1>
+        <div>
+            <button style="width:100px;" onclick="showScript();">出力</button>
+        </div>
+    </header>
+    <div class="spacer"></div>
+    <div id="editor"></div>
+</body>
+<script>
+(function () {
+    var editor = document.getElementById('editor');
+    for (var i = 0; i < ItemObjNew.length; i++) {
+        var itemData     = ItemObjNew[i];
+        var enchListData = g_constDataManager.enchListDataManager.reverseResolveArrayItemId[i];
+
+        if (itemData[1] == 100) continue;
+
+        editor.appendChild(createEditBox(i, itemData[8], enchListData));
+    }
+})();
+
+function createEditBox(index, name, value) {
+    var base = document.createElement('div');
+    base.className = "line";
+    base.innerHTML = `<label><input type="text" id="chk_${index}" value="${convert(value)}" onchange="replaceExpData(${index}, 0, this.value);"><span>${index} : ${name}</span></label>`;
+    return base;
+}
+
+function convert(value) {
+    if (value == undefined) {
+        return '';
+    } else {
+        return value.join(',');
+    }
+}
+function convert2(value) {
+    if (value == undefined) {
+        return '';
+    } else {
+        return `[${value.join(',')}]`;
+    }
+}
+
+function replaceExpData(index, expIndex, value) {
+    g_constDataManager.enchListDataManager.reverseResolveArrayItemId[index] = value.split(',').map((v) => parseInt(v));
+}
+
+function showScript() {
+    var textarea = document.createElement('textarea');
+    var text = '\tg_constDataManager.enchListDataManager.reverseResolveArrayItemId = [\n\t\t';
+    for (var i = 0; i < ItemObjNew.length; i++) {
+        var EnchListData = g_constDataManager.enchListDataManager.reverseResolveArrayItemId[i];
+        
+        text += `${convert2(EnchListData)},`;
+        if (i % 100 == 99) text += '\n\t\t';
+    }
+    text += '\n\t];\n';
+    textarea.value = text;
+
+    var editor = document.getElementById('editor');
+    var clone = editor.cloneNode(false);
+    clone.appendChild(textarea);
+
+    editor.parentNode.replaceChild(clone, editor);
+}
+</script>
+</html>    

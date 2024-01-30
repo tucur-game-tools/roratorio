@@ -2549,6 +2549,24 @@
 		[4237,4235,-10091], // 2527
 		[4236,4235,-10092],
 		[4238,4235,-10093],
+		[-2941,-2940,-1348], // 2530
+		[-2943,-2942,-1245],
+		[-2945,-2944,-1348],
+		[-2947,-2946,-1245],
+		[-2949,-2948,-1348],
+		[-2951,-2950,-1245],
+		[-2953,-2952,-1245],
+		[-2955,-2954,-1348],
+		[-2957,-2956,-1348],
+		[-2959,-2958,-1348],
+		[-2961,-2960,-1348],
+		[-2963,-2962,-1348],
+		[-2965,-2964,-1348],
+		[-2967,-2966,-1348],
+		[-2969,-2968,-1245],
+		[-2971,-2970,-1348],
+		[-2973,-2972,-1348],
+		[-2975,-2974,-1348], // 2547
 	];
 	
 	// SEARCH: END
@@ -4892,6 +4910,24 @@
 	CardIdToSetIdMap[2934] = [2524];
 	CardIdToSetIdMap[2936] = [2525];
 	CardIdToSetIdMap[2938] = [2526];
+	CardIdToSetIdMap[2940] = [2530];
+	CardIdToSetIdMap[2942] = [2531];
+	CardIdToSetIdMap[2944] = [2532];
+	CardIdToSetIdMap[2946] = [2533];
+	CardIdToSetIdMap[2948] = [2534];
+	CardIdToSetIdMap[2950] = [2535];
+	CardIdToSetIdMap[2952] = [2536];
+	CardIdToSetIdMap[2954] = [2537];
+	CardIdToSetIdMap[2956] = [2538];
+	CardIdToSetIdMap[2958] = [2539];
+	CardIdToSetIdMap[2960] = [2540];
+	CardIdToSetIdMap[2962] = [2541];
+	CardIdToSetIdMap[2964] = [2542];
+	CardIdToSetIdMap[2966] = [2543];
+	CardIdToSetIdMap[2968] = [2544];
+	CardIdToSetIdMap[2970] = [2545];
+	CardIdToSetIdMap[2972] = [2546];
+	CardIdToSetIdMap[2974] = [2547];
 
 	// SEARCH: END CARD
 /*
