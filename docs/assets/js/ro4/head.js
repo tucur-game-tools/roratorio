@@ -18026,6 +18026,14 @@ function GetSizeModify(mobData, wSC_Size) {
 		}
 	}
 
+	// 「剛勇無双の紋帽子」の、超越による、全型１００％補正
+	if (n_A_HEAD_DEF_PLUS >= 10 && EquipNumSearch(ITEM_ID_GOYUMUSONO_MONBOSHI)) {
+		if (n_A_HEAD_TRANS_PLUS >= 1) {
+			wSC_Size = 1;
+		}
+	}
+
+
 
 
 	// 特性

@@ -316,7 +316,6 @@ function UpdateEquipItemDataByHtml() {
 	n_A_transcendence[EQUIP_REGION_ID_ARMS]			 = HtmlGetObjectValueByIdAsInteger("OBJID_ARMS_RIGHT_TRANSCENDENCE", 0);
 	n_A_transcendence[EQUIP_REGION_ID_ARMS_LEFT]	 = HtmlGetObjectValueByIdAsInteger("OBJID_ARMS_LEFT_TRANSCENDENCE", 0);
 	n_A_transcendence[EQUIP_REGION_ID_HEAD_TOP]		 = HtmlGetObjectValueByIdAsInteger("OBJID_HEAD_TOP_TRANSCENDENCE", 0);
-	n_A_transcendence[EQUIP_REGION_ID_HEAD_TOP]		 = HtmlGetObjectValueByIdAsInteger("OBJID_HEAD_TOP_TRANSCENDENCE", 0);
 	n_A_transcendence[EQUIP_REGION_ID_HEAD_MID]		 = HtmlGetObjectValueByIdAsInteger("OBJID_HEAD_MID_TRANSCENDENCE", 0);
 	n_A_transcendence[EQUIP_REGION_ID_HEAD_UNDER]	 = HtmlGetObjectValueByIdAsInteger("OBJID_HEAD_UNDER_TRANSCENDENCE", 0);
 	n_A_transcendence[EQUIP_REGION_ID_SHIELD]		 = HtmlGetObjectValueByIdAsInteger("OBJID_SHIELD_TRANSCENDENCE", 0);
@@ -324,6 +323,13 @@ function UpdateEquipItemDataByHtml() {
 	n_A_transcendence[EQUIP_REGION_ID_SHOULDER]		 = HtmlGetObjectValueByIdAsInteger("OBJID_SHOULDER_TRANSCENDENCE", 0);
 	n_A_transcendence[EQUIP_REGION_ID_SHOES]		 = HtmlGetObjectValueByIdAsInteger("OBJID_SHOES_TRANSCENDENCE", 0);
 
+	n_A_ARMS_TRANS_PLUS			 = n_A_transcendence[EQUIP_REGION_ID_ARMS];
+	n_A_ARMS_LEFT_TRANS_PLUS	 = n_A_transcendence[EQUIP_REGION_ID_ARMS_LEFT];
+	n_A_HEAD_TRANS_PLUS			 = n_A_transcendence[EQUIP_REGION_ID_HEAD_TOP];
+	n_A_SHIELD_TRANS_PLUS		 = n_A_transcendence[EQUIP_REGION_ID_SHIELD];
+	n_A_BODY_TRANS_PLUS			 = n_A_transcendence[EQUIP_REGION_ID_BODY];
+	n_A_SHOULDER_TRANS_PLUS		 = n_A_transcendence[EQUIP_REGION_ID_SHOULDER];
+	n_A_SHOES_TRANS_PLUS		 = n_A_transcendence[EQUIP_REGION_ID_SHOES];
 
 	// シャドウ装備データ
 	g_itemIdArray = [];

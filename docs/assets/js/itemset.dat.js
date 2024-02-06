@@ -4995,25 +4995,130 @@
 		[5077,5014,0.1],
 		[5077,5030,0.1],
 		[5077,5031,0.1],
+		[5078,4737,0.1],
+		[5079,4746,0.1],
+		[5080,4758,0.1],
+		[5080,4749,0.1],
+		[5081,4752,0.1],
+		[5082,4755,0.1],
+		[5083,4740,0.1],
+		[5084,4743,0.1],
+		[5085,4734,0.1],
+		[5086,4761,0.1],
+		[5087,4767,0.1],
+		[5088,4764,0.1],
+		[5089,4770,0.1],
+		[5090,5012,0.1],
+		[5091,5016,0.1],
+		[5092,5019,0.1],
+		[5093,5022,0.1],
+		[5094,5025,0.1],
+		[5095,5028,0.1],
+		[5096,4300,0.1],
+		[5097,4304,0.1],
+		[5098,4310,0.1],
+		[5099,4303,0.1],
+		[5100,4302,0.1],
+		[5101,4301,0.1],
+		[5102,4308,0.1],
+		[5103,4313,0.1],
+		[5104,4307,0.1],
+		[5105,4309,0.1],
+		[5106,4311,0.1],
+		[5106,4312,0.1],
+		[5107,4305,0.1],
+		[5108,4306,0.1],
+		[5109,4047,0.1],
+		[5110,4251,0.1],
+		[5111,4450,0.1],
+		[5112,4534,0.1],
+		[5113,4614,0.1],
+		[5114,4654,0.1],
+		[5115,4431,0.1],
+		[5116,4456,0.1],
+		[5117,3120,0.1],
+		[5118,3431,0.1],
+		[5119,3765,0.1],
+		[5120,4103,0.1],
+		[5121,4358,0.1],
+		[5122,2936,0.1],
+		[5123,3273,0.1],
+		[5124,3606,0.1],
+		[5125,3965,0.1],
+		[5126,4231,0.1],
 	]
 
 	TranscendenceIdToSetIdMap = new Array();
 
 	TranscendenceIdToSetIdMap[4954] = [1];
-	TranscendenceIdToSetIdMap[4955] = [1];
-	TranscendenceIdToSetIdMap[4956] = [1];
-	TranscendenceIdToSetIdMap[4957] = [1];
-	TranscendenceIdToSetIdMap[4958] = [1];
-	TranscendenceIdToSetIdMap[4959] = [1];
-	TranscendenceIdToSetIdMap[4960] = [1];
-	TranscendenceIdToSetIdMap[4961] = [1];
-	TranscendenceIdToSetIdMap[4962] = [1];
-	TranscendenceIdToSetIdMap[4963] = [1];
-	TranscendenceIdToSetIdMap[4964] = [1];
-	TranscendenceIdToSetIdMap[4965] = [1];
-	TranscendenceIdToSetIdMap[5010] = [1];
-	TranscendenceIdToSetIdMap[5014] = [1];
-	TranscendenceIdToSetIdMap[5030] = [1];
-	TranscendenceIdToSetIdMap[5031] = [1];
+	TranscendenceIdToSetIdMap[4955] = [2];
+	TranscendenceIdToSetIdMap[4956] = [3];
+	TranscendenceIdToSetIdMap[4957] = [4];
+	TranscendenceIdToSetIdMap[4958] = [5];
+	TranscendenceIdToSetIdMap[4959] = [6];
+	TranscendenceIdToSetIdMap[4960] = [7];
+	TranscendenceIdToSetIdMap[4961] = [8];
+	TranscendenceIdToSetIdMap[4962] = [9];
+	TranscendenceIdToSetIdMap[4963] = [10];
+	TranscendenceIdToSetIdMap[4964] = [11];
+	TranscendenceIdToSetIdMap[4965] = [12];
+	TranscendenceIdToSetIdMap[5010] = [13];
+	TranscendenceIdToSetIdMap[5014] = [14];
+	TranscendenceIdToSetIdMap[5030] = [15];
+	TranscendenceIdToSetIdMap[5031] = [16];
+	TranscendenceIdToSetIdMap[4737] = [17];
+	TranscendenceIdToSetIdMap[4746] = [18];
+	TranscendenceIdToSetIdMap[4758] = [19];
+	TranscendenceIdToSetIdMap[4749] = [20];
+	TranscendenceIdToSetIdMap[4752] = [21];
+	TranscendenceIdToSetIdMap[4755] = [22];
+	TranscendenceIdToSetIdMap[4740] = [23];
+	TranscendenceIdToSetIdMap[4743] = [24];
+	TranscendenceIdToSetIdMap[4734] = [25];
+	TranscendenceIdToSetIdMap[4761] = [26];
+	TranscendenceIdToSetIdMap[4767] = [27];
+	TranscendenceIdToSetIdMap[4764] = [28];
+	TranscendenceIdToSetIdMap[4770] = [29];
+	TranscendenceIdToSetIdMap[5012] = [30];
+	TranscendenceIdToSetIdMap[5016] = [31];
+	TranscendenceIdToSetIdMap[5019] = [32];
+	TranscendenceIdToSetIdMap[5022] = [33];
+	TranscendenceIdToSetIdMap[5025] = [34];
+	TranscendenceIdToSetIdMap[5028] = [35];
+	TranscendenceIdToSetIdMap[4300] = [36];
+	TranscendenceIdToSetIdMap[4304] = [37];
+	TranscendenceIdToSetIdMap[4310] = [38];
+	TranscendenceIdToSetIdMap[4303] = [39];
+	TranscendenceIdToSetIdMap[4302] = [40];
+	TranscendenceIdToSetIdMap[4301] = [41];
+	TranscendenceIdToSetIdMap[4308] = [42];
+	TranscendenceIdToSetIdMap[4313] = [43];
+	TranscendenceIdToSetIdMap[4307] = [44];
+	TranscendenceIdToSetIdMap[4309] = [45];
+	TranscendenceIdToSetIdMap[4311] = [46];
+	TranscendenceIdToSetIdMap[4312] = [47];
+	TranscendenceIdToSetIdMap[4305] = [48];
+	TranscendenceIdToSetIdMap[4306] = [49];
+	TranscendenceIdToSetIdMap[4047] = [50];
+	TranscendenceIdToSetIdMap[4251] = [51];
+	TranscendenceIdToSetIdMap[4450] = [52];
+	TranscendenceIdToSetIdMap[4534] = [53];
+	TranscendenceIdToSetIdMap[4614] = [54];
+	TranscendenceIdToSetIdMap[4654] = [55];
+	TranscendenceIdToSetIdMap[4431] = [56];
+	TranscendenceIdToSetIdMap[4456] = [57];
+	TranscendenceIdToSetIdMap[3120] = [58];
+	TranscendenceIdToSetIdMap[3431] = [59];
+	TranscendenceIdToSetIdMap[3765] = [60];
+	TranscendenceIdToSetIdMap[4103] = [61];
+	TranscendenceIdToSetIdMap[4358] = [62];
+	TranscendenceIdToSetIdMap[2936] = [63];
+	TranscendenceIdToSetIdMap[3273] = [64];
+	TranscendenceIdToSetIdMap[3606] = [65];
+	TranscendenceIdToSetIdMap[3965] = [66];
+	TranscendenceIdToSetIdMap[4231] = [67];
 
+/*
+	TranscendenceIdToSetIdMap[] = [];
+*/
 })();
