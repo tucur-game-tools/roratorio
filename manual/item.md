@@ -101,8 +101,12 @@
 |100|Matk+|
 |102|消費SP-%|
 |111|不死形に対してクリティカル+|
+|151|スタン耐性|
+|152|凍結耐性|
+|159|石化耐性|
 |194|破損しない (1)|
 |195|両手杖 (1)|
+|198|水属性鎧|
 |199|習得スキル設定対象|
 |217|Allステータス+?|
 |219|指定IDの効果を無効|
@@ -348,3 +352,15 @@ if ((itemCount = EquipNumSearch(ITEM_ID_X_5034)) > 0) {
     val += 3 * LearnedSkillSearch(SKILL_ID_NODOWO_NARASU);
 }
 ```
+
+## 拡張対応
+
+超越の対象精錬先
+
+|right|
+|left|
+|top|
+|shield|
+|body|
+|shoulder|
+|shoes|
