@@ -1005,6 +1005,9 @@ CItemInfoManager.RebuildInfoTableSubItemDetail = function (objRoot, dataId, bEna
 
 	// セット情報
 	CItemInfoManager.AppendSetInfo(objRoot, ItemIdToSetIdMap[dataId], bEnableTimeItemButton);
+
+	// 超越情報
+	CItemInfoManager.AppendTranscendenceInfo(objRoot, TranscendenceIdToSetIdMap[dataId], bEnableTimeItemButton);
 };
 
 
@@ -1060,6 +1063,9 @@ CItemInfoManager.RebuildInfoTableSubCardDetail = function (objRoot, dataId, bEna
 
 	// セット情報
 	CItemInfoManager.AppendSetInfo(objRoot, CardIdToSetIdMap[dataId], bEnableTimeItemButton);
+
+	// 超越情報
+	CItemInfoManager.AppendTranscendenceInfo(objRoot, TranscendenceIdToSetIdMap[dataId], bEnableTimeItemButton);
 };
 
 
@@ -1431,4 +1437,90 @@ CItemInfoManager.AppendSetInfo = function (objRoot, dataIdToSetIdMap, bEnableTim
 	);
 };
 
+// XXX: 独自実装
+/**
+ * 超越情報を追記する.
+ * @param objRoot 追記の親オブジェクト
+ * @param dataIdToSetIdMap IDマップ
+ * @param bEnableTimeItemButton 時限効果適用ボタン設置フラグ
+ */
+CItemInfoManager.AppendTranscendenceInfo = function (objRoot, dataIdToSetIdMap, bEnableTimeItemButton) {
 
+	var idx = 0;
+	var idxSameSet = 0;
+
+	var dataIdToSourceIdMap = null;
+	var itemSetId = 0;
+	var itemSetIdArray = null;
+	var itemSetData = null;
+	var itemSetSourceId = 0;
+//	var transcendenceLevel = 0;
+
+	var objSpan = null;
+
+	// 未定義の場合は処理なし
+	if (!dataIdToSetIdMap) {
+		return;
+	}
+
+	// マップをデータソースIDへのマップに変換
+	dataIdToSourceIdMap = new Map();
+	for (idx = 0; idx < dataIdToSetIdMap.length; idx++) {
+
+		itemSetId = dataIdToSetIdMap[idx];
+
+		itemSetData = w_TT[itemSetId];
+
+		itemSetSourceId = itemSetData[0];
+//		transcendenceLevel = itemSetData[1];
+
+		if (!dataIdToSourceIdMap.has("" + itemSetSourceId)) {
+			dataIdToSourceIdMap.set("" + itemSetSourceId, new Array());
+		}
+
+		dataIdToSourceIdMap.get("" + itemSetSourceId).push(itemSetId);
+	}
+
+	// セット情報
+	dataIdToSourceIdMap.forEach(
+		function (value, key, map) {
+
+			var itemSetIdArray = null;
+
+			// データソースID取得
+			itemSetSourceId = Number(key);
+
+			// アイテムセットID配列を取得
+			itemSetIdArray = value;
+
+			// 行開け
+			HtmlCreateElement("br", objRoot);
+
+			// フォント用span生成
+			objSpan = HtmlCreateElement("span", objRoot);
+			objSpan.setAttribute("class", "CSSCLS_ITEM_INFO_SET_INFO");
+
+			// 構成アイテム情報追記
+			HtmlCreateTextNode(GetTranscendenceMemberText(itemSetIdArray[0]), objSpan);
+
+			// 同一セット情報を追記
+/*
+			for (idx = 1; idx < itemSetIdArray.length; idx++) {
+				HtmlCreateTextNode("または", objSpan);
+				HtmlCreateElement("br", objSpan);
+				HtmlCreateTextNode(GetTranscendenceMemberText(itemSetIdArray[idx]), objSpan);
+			}
+*/
+			HtmlCreateTextNode("の時", objSpan);
+			HtmlCreateElement("br", objSpan);
+
+			// セットの性能情報
+			if (itemSetSourceId > 0) {
+				CItemInfoManager.AppendEfficiencyInfoItem(objSpan, Math.abs(itemSetSourceId), bEnableTimeItemButton);
+			}
+			else {
+				CItemInfoManager.AppendEfficiencyInfoCard(objSpan, Math.abs(itemSetSourceId), bEnableTimeItemButton);
+			}
+		}
+	);
+};

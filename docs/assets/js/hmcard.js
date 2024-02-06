@@ -467,7 +467,6 @@ function __ClearCardSlot(objidPrifix, idxArrayToClear) {
  *-----------------------------------------------------------------------------------------------
  ************************************************************************************************/
 function RebuildCardSelect(eqpRgnId, itemId) {
-
 	var objidPrifix = "";
 	var objSelect = null;
 	var idx = 0;
@@ -1424,7 +1423,11 @@ function SetCardSlotEnability(eqpRgnId) {
 		__SetCardSlotEnability(objSelect, usable);
 	}
 
-
+	// XXX: 独自実装
+	// 超越システム
+	objSelect = HtmlGetElementById(strObjIdPrifix + "_TRANSCENDENCE");
+	usable = objSelect.options.length > 1;
+	__SetCardSlotEnability(objSelect, usable);
 }
 
 function __SetCardSlotEnability(objTarget, enabled) {
@@ -1529,4 +1532,84 @@ function ApplyCardShort(eqpRgnId, objidPrifix) {
 
 	// 攻撃手段の更新
 	CAttackMethodAreaComponentManager.RebuildControls();
+}
+
+
+
+
+// XXX: 独自実装
+/************************************************************************************************
+ *
+ * 超越選択セレクト再構築.
+ *
+ *-----------------------------------------------------------------------------------------------
+ * @param eqpRgnId 装備領域ＩＤ
+ * @param itemId 変更後のアイテムＩＤ
+ *-----------------------------------------------------------------------------------------------
+ ************************************************************************************************/
+function RebuildTranscendenceSelect(eqpRgnId, itemId) {
+	var objidPrifix = "";
+	var objSelect = null;
+	var idx = 0;
+	
+	// 装備か所ごとに対応するオブジェクトを取得
+	switch (eqpRgnId) {
+
+	case EQUIP_REGION_ID_ARMS:
+		objidPrifix = "OBJID_ARMS_RIGHT";
+		break;
+
+	case EQUIP_REGION_ID_ARMS_LEFT:
+		objidPrifix = "OBJID_ARMS_LEFT";
+		break;
+
+	case EQUIP_REGION_ID_HEAD_TOP:
+		objidPrifix = "OBJID_HEAD_TOP";
+		break;
+
+	case EQUIP_REGION_ID_HEAD_MID:
+		objidPrifix = "OBJID_HEAD_MID";
+		break;
+
+	case EQUIP_REGION_ID_HEAD_UNDER:
+		objidPrifix = "OBJID_HEAD_UNDER";
+		break;
+
+	case EQUIP_REGION_ID_SHIELD:
+		objidPrifix = "OBJID_SHIELD";
+		break;
+
+	case EQUIP_REGION_ID_BODY:
+		objidPrifix = "OBJID_BODY";
+		break;
+
+	case EQUIP_REGION_ID_SHOULDER:
+		objidPrifix = "OBJID_SHOULDER";
+		break;
+
+	case EQUIP_REGION_ID_SHOES:
+		objidPrifix = "OBJID_SHOES";
+		break;
+
+	case EQUIP_REGION_ID_ACCESSARY_1:
+		objidPrifix = "OBJID_ACCESSARY_1";
+		break;
+
+	case EQUIP_REGION_ID_ACCESSARY_2:
+		objidPrifix = "OBJID_ACCESSARY_2";
+		break;
+	}
+
+	objSelect = HtmlGetElementById(objidPrifix + "_TRANSCENDENCE");
+	HtmlRemoveAllChild(objSelect);
+	
+	var ItemExpData = ItemExpObj[itemId];
+	
+	HtmlCreateElementOption("0", "-", objSelect);
+	for (var max = 1; max <= ItemExpData[1]; max++) {
+		HtmlCreateElementOption(max, "★" + max, objSelect);
+	}
+
+	// 選択項目の復元
+	objSelect.value = n_A_transcendence[eqpRgnId];
 }

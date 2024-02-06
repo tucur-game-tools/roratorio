@@ -43,6 +43,16 @@
             width: 100%;
             height: 500px;
         }
+        .row {
+            display:inline-block;
+            width: 100px;
+            text-align:center;
+            border-right: 1px solid #000;
+        }
+        .row-end {
+            display:inline-block;
+            margin-left: 12px;
+        }
     </style>
 </head>
 
@@ -54,7 +64,14 @@
         </div>
     </header>
     <div class="spacer"></div>
-    <div id="editor"></div>
+    <div id="editor">
+        <div class="line" style="background-color: #ccf;">
+            <span class="row">非表示</span>
+            <span class="row">超越</span>
+            <span class="row">セット対象部位</span>
+            <span class="row-end">名前</span>
+        </div>
+    </div>
 </body>
 <script>
 (function () {
@@ -65,14 +82,19 @@
 
         if (itemData[1] == 100) continue;
 
-        editor.appendChild(createEditBox(i, itemData[8], itemExpData[0]));
+        editor.appendChild(createEditBox(i, itemData[8], itemExpData));
     }
 })();
 
-function createEditBox(index, name, flag) {
+function createEditBox(index, name, expData) {
     var base = document.createElement('div');
     base.className = "line";
-    base.innerHTML = `<label><input type="checkbox" id="chk_${index}" value="${index}" ${flag ? '' : 'checked'} onchange="replaceExpData(${index}, 0, !this.checked);"><span>${name}</span></label>`;
+    base.innerHTML = `<label>
+    <span class="row"><input type="checkbox" id="chk_1_${index}" value="${index}" ${expData[0] ? 'checked' : ''} onchange="replaceExpData(${index}, 0, !this.checked);"></span>
+    <span class="row"><input type="text" size="3" id="txt_2_${index}" value="${expData[1]}" onchange="replaceExpData(${index}, 1, this.value);"></span>
+    <span class="row"><input type="text" size="3" id="txt_3_${index}" value="${expData[2]}" onchange="replaceExpData(${index}, 2, this.value);"></span>
+    <span class="row-end">${name}</span>
+    </label>`;
     return base;
 }
 
@@ -87,7 +109,7 @@ function showScript() {
         var itemData = ItemObjNew[i];
         var itemExpData = ItemExpObj[i];
         
-        text += `    [${itemExpData[0]}], // ${i}: ${itemData[8]}\n`;
+        text += `    [${setDefault(itemExpData[0], false)}, ${setDefault(itemExpData[1], 0)}, ${setDefault(itemExpData[2], 0)}], // ${i}: ${itemData[8]}\n`;
     }
     text += '];\n';
     textarea.value = text;
@@ -97,6 +119,9 @@ function showScript() {
     clone.appendChild(textarea);
 
     editor.parentNode.replaceChild(clone, editor);
+}
+function setDefault(value, def) {
+    return value == undefined ? def : value;
 }
 </script>
 </html>    

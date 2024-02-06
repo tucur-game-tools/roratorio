@@ -18,7 +18,8 @@ CardIdToSetIdMap = new Array();
 // ペットIDからセットIDを検索するマップ
 PetIdToSetIdMap = new Array();
 
-
+// 超越IDからセットIDを検索するマップ
+TranscendenceIdToSetIdMap = new Array();
 
 /**
  * セットアイテムの構成メンバーのテキストを取得する.
@@ -98,7 +99,88 @@ function GetItemSetMemberText(setId){
 	return memberText;
 }
 
+// XXX: 独自実装
+/**
+ * 超越アイテムの構成メンバーのテキストを取得する.
+ * @param setId セットID
+ * @return 構成メンバーのテキスト
+ */
+function GetTranscendenceMemberText(setId){
 
+	var idxMember = 0;
+
+	var setData = null;
+	var memberId = 0;
+	var dataId = 0;
+	var dataName = "";
+
+	var memberText = "";
+
+
+
+	// セット定義データ取得
+	setData = w_TT[setId];
+
+	for (idxMember = 1; idxMember < setData.length; idxMember++) {
+
+		// TODO: 削除予定
+		if (setData[idxMember] == "NULL") {
+			continue;
+		}
+
+		// メンバー指定IDを取得
+		memberId = setData[idxMember];
+
+		// データIDを特定
+		dataId = Math.abs(memberId);
+
+		// 超越段階の場合
+		if (memberId < 1 && memberId > 0) {
+			dataName = (memberId * 10) + '以上';
+		}
+		// アイテム指定の場合
+		else if (memberId > 0) {
+			dataName = ItemObjNew[dataId][ITEM_DATA_INDEX_NAME];
+		}
+
+		// ペット指定の場合
+		else if (memberId < (ITEM_SET_PET_ID_OFFSET * -1)) {
+
+			dataId -= ITEM_SET_PET_ID_OFFSET;
+
+			dataName = "キューペット「" + PET_OBJ[dataId][PET_DATA_INDEX_NAME] + "」";
+		}
+
+		// カード指定の場合
+		else {
+			dataName = CardObjNew[dataId][CARD_DATA_INDEX_NAME];
+
+			// エンチャントでない場合は、末尾に "C" を付与
+			if (CardObjNew[dataId][CARD_DATA_INDEX_KIND] != CARD_KIND_ENCHANT) {
+				dataName += "C";
+			}
+
+			// エンチャントの場合は、末尾に "(エンチャント)" を付与
+			else {
+				dataName += "(エンチャント)";
+			}
+		}
+
+		if (memberText.length > 0) {
+			memberText += "の超越段階が";
+		}
+
+		memberText += "【" + dataName + "】";
+	}
+
+	// TODO: 矢が構成品目のケース（いずれ統合予定）
+	if (2356 <= setData[0] && setData[0] <= 2359) {
+		// TODO: なぜかカナに名称が設定されている
+		memberText += "＋【"+ ItemObjNew[setData[0]][ITEM_DATA_INDEX_KANA] +"】";
+	}
+
+	return memberText;
+}
 
 /**
  * セットの装備状況を検査し、適用する.
@@ -115,17 +197,21 @@ function CheckAndApplyItemSetEquipping() {
 
 	var equippedItemIdArray = null;
 	var equippedCardIdArray = null;
+	var equippedTranscendenceIdArray = null;
 
 	var modifiedItemIdArray = null;
 	var modifiedCardIdArray = null;
+	var modifiedTranscendenceIdArray = null;
 
 	// 装備済みID配列を用意
 	equippedItemIdArray = n_A_Equip.slice(0, EQUIP_REGION_ID_COUNT);
 	equippedCardIdArray = n_A_card.slice(0, CARD_REGION_ID_COUNT);
+	equippedTranscendenceIdArray = n_A_transcendence.slice(0, EQUIP_REGION_ID_COUNT);
 
 	// 加工用ID配列を用意
 	modifiedItemIdArray = n_A_Equip.slice(0, EQUIP_REGION_ID_COUNT);
 	modifiedCardIdArray = n_A_card.slice(0, CARD_REGION_ID_COUNT);
+	modifiedTranscendenceIdArray = n_A_transcendence.slice(0, EQUIP_REGION_ID_COUNT);
 
 	// すべてのセット定義をループ
 	for (idx = 0; idx < w_SE.length; idx++) {
@@ -153,6 +239,95 @@ function CheckAndApplyItemSetEquipping() {
 
 			// アイテム指定の場合
 			if (memberId > 0) {
+
+				// 装備していなければ、処理打ち切り
+				if (equippedItemIdArray.indexOf(dataId) < 0) {
+					break;
+				}
+
+				// TODO: データ移行過渡処理
+				// 移行後データに定義がある場合は、処理打ち切り
+				if (IsEnableMigrationBlockTransit()) {
+					// 移行データが定義されているものは、処理打ち切り
+					if (g_constDataManager.itemDataManager.GetRegisteredIdArray().indexOf(dataId) >= 0) {
+						break;
+					}
+				}
+			}
+
+			// ペット指定の場合
+			else if (memberId < (ITEM_SET_PET_ID_OFFSET * -1)) {
+
+				dataId -= ITEM_SET_PET_ID_OFFSET;
+
+				// 装備していなければ、処理打ち切り
+				if (n_A_PassSkill8[0] != dataId) {
+					break;
+				}
+			}
+
+			// カード指定の場合
+			else {
+				// 装備していなければ、処理打ち切り
+				if (equippedCardIdArray.indexOf(dataId) < 0) {
+					break;
+				}
+			}
+		}
+
+		// 全メンバーを装備していない場合は、次へ
+		if (idxMember != setData.length) {
+			continue;
+		}
+
+		// セット定義IDを取得
+		setSourceId = setData[0];
+
+		// アイテムでの定義の場合
+		if (setSourceId > 0) {
+			modifiedItemIdArray.push(Math.abs(setSourceId));
+		}
+
+		// カードでの定義の場合
+		else {
+			modifiedCardIdArray.push(Math.abs(setSourceId));
+		}
+	}
+	
+	// XXX: 独自実装
+	// すべてのセット定義をループ
+	for (idx = 0; idx < w_TT.length; idx++) {
+
+		// セット定義データ取得
+		setData = w_TT[idx];
+
+		// 無効な定義はスキップ
+		if (setData.length <= 1) {
+			continue;
+		}
+
+		for (idxMember = 1; idxMember < setData.length; idxMember++) {
+
+			// TODO: 削除予定
+			if (setData[idxMember] == "NULL") {
+				continue;
+			}
+
+			// メンバー指定IDを取得
+			memberId = setData[idxMember];
+
+			// データIDを特定
+			dataId = Math.abs(memberId);
+
+			// 超越の場合
+			if (memberId < 1 && memberId > 0) {
+				var eIdx = equippedItemIdArray.indexOf(setData[1]);
+				if (equippedTranscendenceIdArray[eIdx] < dataId * 10) {
+					break;
+				}
+			}
+			// アイテム指定の場合
+			else if (memberId > 0) {
 
 				// 装備していなければ、処理打ち切り
 				if (equippedItemIdArray.indexOf(dataId) < 0) {

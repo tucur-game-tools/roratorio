@@ -225,7 +225,6 @@ function HtmlCreateElementOption(optionValue, optionText, objSelect) {
  * @param objParent 対象となるオブジェクト
  ************************************************************************************************/
 function HtmlRemoveAllChild(objParent) {
-
 	if (objParent == null) {
 		return;
 	}
@@ -379,7 +378,6 @@ function HtmlGetSelectedOptgroup(objIDSelect, valueWhenNull, valueWhenNoGroups) 
 function HtmlGetObjectValueById(objID, valueWhenNull) {
 
 	var objTarget = document.getElementById(objID);
-
 	if (objTarget == null) {
 		return valueWhenNull;
 	}

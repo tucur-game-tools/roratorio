@@ -508,12 +508,12 @@ class CSaveDataManager {
 	/**
 	 * 保持しているデータを画面部品に適用する.
 	 */
-	applyDataToControls () {
+	applyDataToControls (extraUrlText) {
 
 		if (!Array.isArray(this.#saveDataUnitArray)) {
 			return "";
 		}
-
+		
 		// グローバル変数の初期化（移行対応変数のみ）
 		ResetConfDataAllMIG(false);
 
@@ -567,7 +567,7 @@ class CSaveDataManager {
 			thisF.#applyDataToControlsCompositBuff(unitTypeF, idxMap.get(unitTypeF), dataArrayF);
 		};
 		const funcCallApplyEquipable = (thisF, eqpRgnF) => {
-			thisF.#applyDataToControlsEquipable(eqpRgnF, idxMapEqpRgns.get(eqpRgnF), mapDefEquipables);
+			thisF.#applyDataToControlsEquipable(eqpRgnF, idxMapEqpRgns.get(eqpRgnF), mapDefEquipables, extraUrlText);
 		};
 		const funcCallApplyEquipableShadow = (thisF, eqpRgnF) => {
 			thisF.#applyDataToControlsEquipableShadow(eqpRgnF, idxMapEqpRgns.get(eqpRgnF), mapDefEquipables);
@@ -705,8 +705,6 @@ class CSaveDataManager {
 		spliceArray.push(g_confDataCustomSkillMIG[5]);
 		g_confDataCustomSkill.splice(1, spliceArray.length, ...spliceArray);
 
-
-
 		// 画面表示リフレッシュ処理（既存移植）
 		OnClickSkillSWLearned();
 		Click_A8(false);	// BuffChara（旧：支援スキル８（その他の支援/設定））
@@ -836,7 +834,7 @@ class CSaveDataManager {
 	 * @param {int|undefined} idxUnitEqpRgn データユニットの配列インデックス
 	 * @param {Map} mapDefEquipables 装備定義のマップ
 	 */
-	#applyDataToControlsEquipable (equipRegionKind, idxUnitEqpRgn, mapDefEquipables) {
+	#applyDataToControlsEquipable (equipRegionKind, idxUnitEqpRgn, mapDefEquipables, extraUrlText) {
 
 		// 装備領域IDのマップ
 		const eqpRgnIDMapMap = new Map([
@@ -1029,6 +1027,7 @@ class CSaveDataManager {
 			}
 			if (GetSlotMode() == SLOTPAGER_MODE_CARD) {
 				RebuildCardSelect(eqpRgnID, itemID);
+				RebuildTranscendenceSelect(eqpRgnID, itemID);
 				SetCardSlotEnability(eqpRgnID);
 			}
 			else {
@@ -1052,6 +1051,12 @@ class CSaveDataManager {
 			for (let idxSlot = 0; idxSlot < 4; idxSlot++) {
 				funcLoadAndSetCard(objID, (1 + idxSlot), cardCategoryIDArray[idxSlot], cardIDArray[idxSlot]);
 			}
+
+			// XXX: 独自実装
+			// 超越データの読み込み
+			DecodeUrl2(extraUrlText);
+			HtmlSetObjectValueById(objID + "_TRANSCENDENCE", n_A_transcendence[eqpRgnID]);
+			SetStatefullData("DATA_" + objID + "_TRANSCENDENCE", n_A_transcendence[eqpRgnID]);
 
 			// ランダムオプションデータの読み込み
 			const rndOptIDArray = [
@@ -1708,6 +1713,3 @@ class CSaveDataManager {
 
 
 }
-
-
-

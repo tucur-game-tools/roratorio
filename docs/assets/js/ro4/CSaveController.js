@@ -327,7 +327,7 @@ class CSaveController {
 	 * URLからデータを読み込む.
 	 * @param {string} urlText データURL文字列（クエリ部分のみ）
 	 */
-	static loadFromURL (urlText) {
+	static loadFromURL (urlText, extraUrlText) {
 
 		// サニタイジング
 		let dataText = this.sanitizeDataText(urlText);
@@ -351,8 +351,8 @@ class CSaveController {
 		saveDataManagerNew.doCompaction();
 
 		// データ復元
-		saveDataManagerNew.applyDataToControls();
-
+		saveDataManagerNew.applyDataToControls(extraUrlText);
+		
 		// メンバ変数を置き換え
 		this.#saveDataManagerCur = saveDataManagerNew;
 

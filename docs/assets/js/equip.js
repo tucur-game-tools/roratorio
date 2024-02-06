@@ -457,8 +457,9 @@ function IsLearnedEffectEquipable(dataKind, targetId) {
 			}
 		}
 		setIndexArray = ItemIdToSetIdMap[targetId];
-	}
 
+	}
+	
 	// カード単品を判定
 	else {
 		for (idx = CARD_DATA_INDEX_SPBEGIN; idx < CardObjNew[targetId].length; idx += 2) {
@@ -781,6 +782,8 @@ function OnChangeEquip(eqpRgnId, itemId) {
 
 		// 選択セレクトボックスの再構築
 		RebuildCardSelect(eqpRgnId, itemId);
+		// XXX: 独自実装
+		RebuildTranscendenceSelect(eqpRgnId, itemId);
 
 		// 使用可否の設定
 		SetCardSlotEnability(eqpRgnId);
@@ -1314,7 +1317,15 @@ function OnChangeCard(cardId) {
 }
 
 
+/**
+ * 超越変更イベントハンドラ
+ */
+function OnChangeTranscendence(transId) {
+	StAllCalc();
 
+	// 攻撃手段の更新
+	CAttackMethodAreaComponentManager.RebuildControls();
+}
 
 
 /**
@@ -1903,6 +1914,8 @@ function __ClearEquip(eqpRgnId, objidPrifix, itemId) {
 
 		// 選択セレクトボックスの再構築
 		RebuildCardSelect(eqpRgnId, itemId);
+		// XXX: 独自実装
+		RebuildTranscendenceSelect(eqpRgnId, itemId);
 
 		// 使用可否の設定
 		SetCardSlotEnability(eqpRgnId);
