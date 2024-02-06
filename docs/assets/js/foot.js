@@ -310,6 +310,20 @@ function UpdateEquipItemDataByHtml() {
 		n_A_SHOULDER_DEF_PLUS = eval(A_SHOULDER_DEF_PLUS.value);
 		n_A_SHOES_DEF_PLUS = eval(A_SHOES_DEF_PLUS.value);
 	}
+	
+	// XXX: 独自実装
+	// 超越システム
+	n_A_transcendence[EQUIP_REGION_ID_ARMS]			 = HtmlGetObjectValueByIdAsInteger("OBJID_ARMS_RIGHT_TRANSCENDENCE", 0);
+	n_A_transcendence[EQUIP_REGION_ID_ARMS_LEFT]	 = HtmlGetObjectValueByIdAsInteger("OBJID_ARMS_LEFT_TRANSCENDENCE", 0);
+	n_A_transcendence[EQUIP_REGION_ID_HEAD_TOP]		 = HtmlGetObjectValueByIdAsInteger("OBJID_HEAD_TOP_TRANSCENDENCE", 0);
+	n_A_transcendence[EQUIP_REGION_ID_HEAD_TOP]		 = HtmlGetObjectValueByIdAsInteger("OBJID_HEAD_TOP_TRANSCENDENCE", 0);
+	n_A_transcendence[EQUIP_REGION_ID_HEAD_MID]		 = HtmlGetObjectValueByIdAsInteger("OBJID_HEAD_MID_TRANSCENDENCE", 0);
+	n_A_transcendence[EQUIP_REGION_ID_HEAD_UNDER]	 = HtmlGetObjectValueByIdAsInteger("OBJID_HEAD_UNDER_TRANSCENDENCE", 0);
+	n_A_transcendence[EQUIP_REGION_ID_SHIELD]		 = HtmlGetObjectValueByIdAsInteger("OBJID_SHIELD_TRANSCENDENCE", 0);
+	n_A_transcendence[EQUIP_REGION_ID_BODY]			 = HtmlGetObjectValueByIdAsInteger("OBJID_BODY_TRANSCENDENCE", 0);
+	n_A_transcendence[EQUIP_REGION_ID_SHOULDER]		 = HtmlGetObjectValueByIdAsInteger("OBJID_SHOULDER_TRANSCENDENCE", 0);
+	n_A_transcendence[EQUIP_REGION_ID_SHOES]		 = HtmlGetObjectValueByIdAsInteger("OBJID_SHOES_TRANSCENDENCE", 0);
+
 
 	// シャドウ装備データ
 	g_itemIdArray = [];
@@ -1033,7 +1047,6 @@ function StAllCalc(){
 
 		// これまでの通常処理
 		CheckAndApplyItemSetEquipping();
-
 
 
 		switch (n_B_TAISEI[MOB_CONF_PLAYER_ID_SENTO_AREA]) {
@@ -28676,6 +28689,7 @@ function GetEquippedSPSubEquip(spid, invalidItemIdArray, bListUp, bExact) {
 	var spVal = 0;
 	var itemId = 0;
 	var itemData = 0;
+	var itemExpData = 0;
 
 	var spValToCorrect = 0;
 	var listUpArray = new Array();
@@ -28688,6 +28702,7 @@ function GetEquippedSPSubEquip(spid, invalidItemIdArray, bListUp, bExact) {
 		// 装備データからアイテムデータを取得
 		itemId = n_A_Equip[eqpRegionId];
 		itemData = ItemObjNew[itemId];
+		itemExpData = ItemExpObj[itemId];
 
 		// 効果が無効の装備でないかを検査
 		if (invalidItemIdArray) {
@@ -28730,6 +28745,38 @@ function GetEquippedSPSubEquip(spid, invalidItemIdArray, bListUp, bExact) {
 		default:
 			eqpRefined = 0;
 
+			if (itemExpData[2]) {
+				switch (itemExpData[2]) {
+
+				case "right":
+					eqpRefined = n_A_Weapon_ATKplus;
+					break;
+
+				case "left":
+					eqpRefined = n_A_Weapon2_ATKplus;
+					break;
+
+				case "top":
+					eqpRefined = n_A_HEAD_DEF_PLUS;
+					break;
+
+				case "shield":
+					eqpRefined = n_A_SHIELD_DEF_PLUS;
+					break;
+
+				case "body":
+					eqpRefined = n_A_BODY_DEF_PLUS;
+					break;
+
+				case "shoulder":
+					eqpRefined = n_A_SHOULDER_DEF_PLUS;
+					break;
+
+				case "shoes":
+					eqpRefined = n_A_SHOES_DEF_PLUS;
+					break;
+				}
+			}
 		}
 
 		// アイテムのＳＰ定義をループ検索
@@ -30303,7 +30350,6 @@ URLIN(location.href);
 
 
 function Init(){
-
 	var idx = 0;
 
 	n_A_BaseLV = 1;
@@ -30344,6 +30390,10 @@ function Init(){
 
 	n_A_card = new Array();
 	for(i=0;i<=100;i++) n_A_card[i] = 0;
+	
+	// XXX: 独自実装
+	n_A_transcendence = new Array();
+	for(i=0;i<=40;i++) n_A_transcendence[i] = 0;
 
 	n_A_costume = new Array();
 	for(i = 0; i < COSTUME_REGION_ID_COUNT; i++) {

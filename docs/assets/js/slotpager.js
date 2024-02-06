@@ -375,6 +375,12 @@ function __BreakSlotOfCard(objidPrifix) {
 		strObjId = objidPrifix + "_CARD_TD_" + idx;
 		HtmlRemoveFromParent(HtmlGetElementById(strObjId));
 	}
+    
+    // XXX: 独自実装 {
+    // 超越システムスロットを削除
+    strObjId = objidPrifix + "_TRANSCENDENCE_TD";
+    HtmlRemoveFromParent(HtmlGetElementById(strObjId));
+    // }
 }
 
 /************************************************************************************************
@@ -503,7 +509,6 @@ function RebuildSlotAsCard(eqpRgnId) {
  * @return なし
  ************************************************************************************************/
 function __RebuildSlotAsCard(eqpRgnId, objidPrifix) {
-
 	var objRoot = null;
 	var objTd = null;
 	var objSelect = null;
@@ -519,10 +524,9 @@ function __RebuildSlotAsCard(eqpRgnId, objidPrifix) {
 	if (objRoot == null) {
 		return;
 	}
-
+    
 	// 当該プリフィクスを持つすべてのスロットを再構築
 	for (idx = SLOT_INDEX_CARD_MIN; idx <= SLOT_INDEX_CARD_MAX; idx++) {
-
 		// カード欄TDエレメント
 		objTd = HtmlCreateElement("td", objRoot);
 		HtmlSetAttribute(objTd, "id", objidPrifix + "_CARD_TD_" + idx);
@@ -537,6 +541,21 @@ function __RebuildSlotAsCard(eqpRgnId, objidPrifix) {
 		itemId = GetStatefullData("DATA_" + objidPrifix, 0);
 		RebuildCardSelect(eqpRgnId, itemId);
 	}
+
+    // XXX: 独自実装 {
+    // 超越システム
+    objTd = HtmlCreateElement("td", objRoot);
+    HtmlSetAttribute(objTd, "id", objidPrifix + "_TRANSCENDENCE_TD");
+    HtmlSetAttribute(objTd, "colspan", "2");
+
+    objSelect = HtmlCreateElement("select", objTd);
+    HtmlSetAttribute(objSelect, "id", objidPrifix + "_TRANSCENDENCE");
+    HtmlSetAttribute(objSelect, "onChange", "OnChangeTranscendence(this.value)");
+
+    itemId = GetStatefullData("DATA_" + objidPrifix, 0);
+    RebuildTranscendenceSelect(eqpRgnId, itemId);
+    // }
+
 }
 
 /************************************************************************************************

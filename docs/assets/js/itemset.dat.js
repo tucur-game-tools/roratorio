@@ -4975,4 +4975,45 @@
 	PetIdToSetIdMap[92] = [2528];
 	PetIdToSetIdMap[93] = [2529];
 
+	// XXX: 独自実装
+	// 超越システム
+	w_TT = [
+		[],
+		[5077,4954,0.1], // 1
+		[5077,4955,0.1],
+		[5077,4956,0.1],
+		[5077,4957,0.1],
+		[5077,4958,0.1],
+		[5077,4959,0.1],
+		[5077,4960,0.1],
+		[5077,4961,0.1],
+		[5077,4962,0.1],
+		[5077,4963,0.1],
+		[5077,4964,0.1],
+		[5077,4965,0.1],
+		[5077,5010,0.1],
+		[5077,5014,0.1],
+		[5077,5030,0.1],
+		[5077,5031,0.1],
+	]
+
+	TranscendenceIdToSetIdMap = new Array();
+
+	TranscendenceIdToSetIdMap[4954] = [1];
+	TranscendenceIdToSetIdMap[4955] = [1];
+	TranscendenceIdToSetIdMap[4956] = [1];
+	TranscendenceIdToSetIdMap[4957] = [1];
+	TranscendenceIdToSetIdMap[4958] = [1];
+	TranscendenceIdToSetIdMap[4959] = [1];
+	TranscendenceIdToSetIdMap[4960] = [1];
+	TranscendenceIdToSetIdMap[4961] = [1];
+	TranscendenceIdToSetIdMap[4962] = [1];
+	TranscendenceIdToSetIdMap[4963] = [1];
+	TranscendenceIdToSetIdMap[4964] = [1];
+	TranscendenceIdToSetIdMap[4965] = [1];
+	TranscendenceIdToSetIdMap[5010] = [1];
+	TranscendenceIdToSetIdMap[5014] = [1];
+	TranscendenceIdToSetIdMap[5030] = [1];
+	TranscendenceIdToSetIdMap[5031] = [1];
+
 })();

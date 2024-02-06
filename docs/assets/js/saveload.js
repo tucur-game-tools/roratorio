@@ -3744,8 +3744,12 @@ function URLIN(strUrl){
 		return;
 	}
 
+	// XXX: 独自実装
+	var splittedArray2 = splittedArray[1].split('&');	
+	var extraData = splittedArray2.length > 1 ? splittedArray2[1] : null;
+	
 	// データ復元
-	DecodeUrl(splittedArray[1]);
+	DecodeUrl(splittedArray2[0], extraData);
 
 	// 再計算
 	calc();
@@ -3803,7 +3807,7 @@ function AdaptSaveDataStrSize(saveDataStrExtracted) {
 /**
  * ＵＲＬ文字列からデータを復元する.
  */
-function DecodeUrl(loadDataUrl){
+function DecodeUrl(loadDataUrl, extraDataUrl){
 
 	var idx = 0;
 	var idxLoop = 0;
@@ -3951,7 +3955,7 @@ function DecodeUrl(loadDataUrl){
 
 		// 新形式でのロードを試す
 		try {
-			CSaveController.loadFromURL(loadDataUrl);
+			CSaveController.loadFromURL(loadDataUrl, extraDataUrl);
 		}
 		// 新形式もダメならエラー
 		catch (err) {
@@ -4127,6 +4131,8 @@ function DecodeUrl(loadDataUrl){
 		// スロット欄の更新
 		if (GetSlotMode() == SLOTPAGER_MODE_CARD) {
 			RebuildCardSelect(eqpRgn, SaveData[idxEquip]);
+			// XXX: 独自実装
+			RebuildTranscendenceSelect(eqpRgn, SaveData[idxEquip])
 			SetCardSlotEnability(EQUIP_REGION_ID_ARMS);
 		}
 		else {
@@ -4161,6 +4167,8 @@ function DecodeUrl(loadDataUrl){
 			// スロット欄の更新
 			if (GetSlotMode() == SLOTPAGER_MODE_CARD) {
 				RebuildCardSelect(eqpRgn, SaveData[idxEquip]);
+				// XXX: 独自実装
+				RebuildTranscendenceSelect(eqpRgn, SaveData[idxEquip]);
 				SetCardSlotEnability(EQUIP_REGION_ID_ARMS_LEFT);
 			}
 			else {
@@ -4196,6 +4204,8 @@ function DecodeUrl(loadDataUrl){
 			// スロット欄の更新
 			if (GetSlotMode() == SLOTPAGER_MODE_CARD) {
 				RebuildCardSelect(eqpRgn, SaveData[idxEquip]);
+				// XXX: 独自実装
+				RebuildTranscendenceSelect(eqpRgn, SaveData[idxEquip]);
 				SetCardSlotEnability(EQUIP_REGION_ID_SHIELD);
 			}
 			else {
@@ -4230,6 +4240,8 @@ function DecodeUrl(loadDataUrl){
 		// スロット欄の更新
 		if (GetSlotMode() == SLOTPAGER_MODE_CARD) {
 			RebuildCardSelect(eqpRgn, SaveData[idxEquip]);
+			// XXX: 独自実装
+			RebuildTranscendenceSelect(eqpRgn, SaveData[idxEquip]);
 			SetCardSlotEnability(EQUIP_REGION_ID_HEAD_TOP);
 		}
 		else {
@@ -4261,6 +4273,8 @@ function DecodeUrl(loadDataUrl){
 		// スロット欄の更新
 		if (GetSlotMode() == SLOTPAGER_MODE_CARD) {
 			RebuildCardSelect(eqpRgn, SaveData[idxEquip]);
+			// XXX: 独自実装
+			RebuildTranscendenceSelect(eqpRgn, SaveData[idxEquip]);
 			SetCardSlotEnability(EQUIP_REGION_ID_HEAD_MID);
 		}
 		else {
@@ -4292,6 +4306,8 @@ function DecodeUrl(loadDataUrl){
 		// スロット欄の更新
 		if (GetSlotMode() == SLOTPAGER_MODE_CARD) {
 			RebuildCardSelect(eqpRgn, SaveData[idxEquip]);
+			// XXX: 独自実装
+			RebuildTranscendenceSelect(eqpRgn, SaveData[idxEquip]);
 			SetCardSlotEnability(EQUIP_REGION_ID_HEAD_UNDER);
 		}
 		else {
@@ -4325,6 +4341,8 @@ function DecodeUrl(loadDataUrl){
 		// スロット欄の更新
 		if (GetSlotMode() == SLOTPAGER_MODE_CARD) {
 			RebuildCardSelect(eqpRgn, SaveData[idxEquip]);
+			// XXX: 独自実装
+			RebuildTranscendenceSelect(eqpRgn, SaveData[idxEquip]);
 			SetCardSlotEnability(EQUIP_REGION_ID_BODY);
 		}
 		else {
@@ -4358,6 +4376,8 @@ function DecodeUrl(loadDataUrl){
 		// スロット欄の更新
 		if (GetSlotMode() == SLOTPAGER_MODE_CARD) {
 			RebuildCardSelect(eqpRgn, SaveData[idxEquip]);
+			// XXX: 独自実装
+			RebuildTranscendenceSelect(eqpRgn, SaveData[idxEquip]);
 			SetCardSlotEnability(EQUIP_REGION_ID_SHOULDER);
 		}
 		else {
@@ -4391,6 +4411,8 @@ function DecodeUrl(loadDataUrl){
 		// スロット欄の更新
 		if (GetSlotMode() == SLOTPAGER_MODE_CARD) {
 			RebuildCardSelect(eqpRgn, SaveData[idxEquip]);
+			// XXX: 独自実装
+			RebuildTranscendenceSelect(eqpRgn, SaveData[idxEquip]);
 			SetCardSlotEnability(EQUIP_REGION_ID_SHOES);
 		}
 		else {
@@ -4422,6 +4444,8 @@ function DecodeUrl(loadDataUrl){
 		// スロット欄の更新
 		if (GetSlotMode() == SLOTPAGER_MODE_CARD) {
 			RebuildCardSelect(eqpRgn, SaveData[idxEquip]);
+			// XXX: 独自実装
+			RebuildTranscendenceSelect(eqpRgn, SaveData[idxEquip]);
 			SetCardSlotEnability(EQUIP_REGION_ID_ACCESSARY_1);
 		}
 		else {
@@ -4453,6 +4477,8 @@ function DecodeUrl(loadDataUrl){
 		// スロット欄の更新
 		if (GetSlotMode() == SLOTPAGER_MODE_CARD) {
 			RebuildCardSelect(eqpRgn, SaveData[idxEquip]);
+			// XXX: 独自実装
+			RebuildTranscendenceSelect(eqpRgn, SaveData[idxEquip]);
 			SetCardSlotEnability(EQUIP_REGION_ID_ACCESSARY_2);
 		}
 		else {
@@ -4979,8 +5005,15 @@ function DecodeUrl(loadDataUrl){
 
 }
 
+// XXX: 独自実装
+function DecodeUrl2(loadDataUrl){
+	if (!loadDataUrl) return;
 
-
+	var data = JSON.parse(atob(loadDataUrl));
+	if ('transcendence' in data) {
+		n_A_transcendence = data['transcendence'];
+	}
+}
 
 
 function LoadCookie3(){
@@ -5703,6 +5736,3 @@ function MagicDamageCalcPatternSurbey() {
 
 }
 */
-
-
-

@@ -74,8 +74,16 @@ function OnClickUrlOutMIG () {
 	// サイトのベースURLを取得
 	const locationBase = (location.href.split("?"))[0];
 
+	// XXX: 独自実装
+	const extraData = (() => {
+		var data = {
+			'transcendence': n_A_transcendence,
+		};
+		return btoa(JSON.stringify(data));
+	})();
+
 	// 最終的なURLを合成
-	const urlText = locationBase + "?" + dataURL;
+	const urlText = locationBase + "?" + dataURL + "&" + extraData;
 
 	// 出力欄へ設定
 	HtmlSetObjectValueById("OBJID_INPUT_URL_OUT_MIG", urlText);
@@ -99,7 +107,12 @@ function OnClickUrlInMIG () {
 		return;
 	}
 
-	CSaveController.loadFromURL(splitted[1]);
+	// XXX: 独自実装
+	var splitted2 = splitted[1].split('&');
+	var extraData = splitted2.length > 1 ? splitted2[1] : null;
+
+	CSaveController.loadFromURL(splitted[0], extraData);
+
 
 	document.getElementById("OBJID_INPUT_URL_IN_MIG").focus();
 }
