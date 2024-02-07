@@ -18033,6 +18033,9 @@ function GetSizeModify(mobData, wSC_Size) {
 		}
 	}
 
+	// ドリベリオン・エレナ・ヴォルコヴァ(サイン入り)カード装着時の、全型１００％補正
+	if (CardObjNew[n_A_card[CARD_REGION_ID_ACCESSARY_1]][0] == CARD_ID_X_2990
+		|| CardObjNew[n_A_card[CARD_REGION_ID_ACCESSARY_2]][0] == CARD_ID_X_2990) wSC_Size = 1;
 
 
 
