@@ -9390,6 +9390,12 @@ g_ITEM_SP_SKILL_CAST_TIME_value_forCalcData = w;
 			chkary.push(70);
 		}
 
+		//----------------------------------------------------------------
+		// 「秘密の羽・レイジーカード」の、装備効果
+		//----------------------------------------------------------------
+		if (CardNumSearch(CARD_ID_X_2988)) {
+			chkary.push(70);
+		}
 
 
 
@@ -16814,6 +16820,14 @@ g_ITEM_SP_SKILL_CAST_TIME_value_forCalcData = w;
 			}
 		}
 
+		//----------------------------------------------------------------
+		// 「ルッキーカード」の、スキル習得による効果
+		//----------------------------------------------------------------
+		if (CardNumSearch(CARD_ID_X_2979)) {
+			if (LearnedSkillSearch(SKILL_ID_FAITH)) {
+				n_tok[ITEM_SP_RESIST_ELM_HOLY] -= 15 * CardNumSearch(CARD_ID_X_2979);
+			}
+		}
 
 
 

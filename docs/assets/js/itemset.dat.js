@@ -5046,6 +5046,20 @@
 		[5124,3606,0.1],
 		[5125,3965,0.1],
 		[5126,4231,0.1],
+
+		[5127,3734,0.1],
+		[5128,3723,0.1],
+		[5129,3717,0.1],
+		[5130,3741,0.1],
+		[5131,3712,0.1],
+		[5132,3709,0.1],
+		[5133,3736,0.1],
+		[5134,3724,0.1],
+		[5135,3737,0.1],
+		[5135,3727,0.1],
+		[5136,3743,0.1],
+		[5137,3715,0.1],
+		[5138,3745,0.1],
 	]
 
 	TranscendenceIdToSetIdMap = new Array();
@@ -5117,6 +5131,19 @@
 	TranscendenceIdToSetIdMap[3606] = [65];
 	TranscendenceIdToSetIdMap[3965] = [66];
 	TranscendenceIdToSetIdMap[4231] = [67];
+	TranscendenceIdToSetIdMap[3734] = [68];
+	TranscendenceIdToSetIdMap[3723] = [69];
+	TranscendenceIdToSetIdMap[3717] = [70];
+	TranscendenceIdToSetIdMap[3741] = [71];
+	TranscendenceIdToSetIdMap[3712] = [72];
+	TranscendenceIdToSetIdMap[3709] = [73];
+	TranscendenceIdToSetIdMap[3736] = [74];
+	TranscendenceIdToSetIdMap[3724] = [75];
+	TranscendenceIdToSetIdMap[3737] = [76];
+	TranscendenceIdToSetIdMap[3727] = [77];
+	TranscendenceIdToSetIdMap[3743] = [78];
+	TranscendenceIdToSetIdMap[3715] = [79];
+	TranscendenceIdToSetIdMap[3745] = [80];
 
 /*
 	TranscendenceIdToSetIdMap[] = [];
