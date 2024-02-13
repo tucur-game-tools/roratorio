@@ -121,7 +121,16 @@ function showScript() {
     editor.parentNode.replaceChild(clone, editor);
 }
 function setDefault(value, def) {
-    return value == undefined ? def : value;
+    return typing(value == undefined ? def : value);
+}
+function typing(value) {
+    if (typeof value )
+    switch (typeof value) {
+        case "string":
+            return `"${value}"`;
+        default:
+            return value;
+    }
 }
 </script>
 </html>    
