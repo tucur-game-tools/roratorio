@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="robots" content="noindex">
+    <meta charset="UTF-8">
+
+    <title>EnchMapのデータ生成ページ</title>
+
+    <script>
+    var g_constDataManager = {};
+    g_constDataManager.enchListDataManager = {};
+    </script>
+
+    <script src="/roratorio/assets/js/card.dat.js"></script>
+    <script src="/roratorio/assets/js/item.dat.js"></script>
+    <script src="/roratorio/assets/js/data/mig.enchlist.dat.js"></script>
+
+    <style>
+        body {
+            margin:0;
+        }
+        header {
+            position: fixed;
+            width: 100%;
+            background: #99aecc;
+            border-bottom: 1px solid #333;
+            padding: 6px;
+        }
+        header h1 {
+            padding: 0;
+            margin: 0;
+        }
+        header div {
+            text-align: right;
+            padding-right: 12px;
+        }
+        .spacer {
+            height: 95px;
+            background: #000;
+        }
+        .line {
+            padding: 6px 0;
+            border-bottom: 1px solid #333;
+        }
+        .line label {
+            display: block;
+        }
+        .line input {
+            margin:0 6px;
+        }
+        textarea {
+            width: 100%;
+            height: 500px;
+        }
+        
+        div.input {
+            margin: 12px;
+        }
+        div.output {
+            margin: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>EnchMapのデータ生成</h1>
+        <div>
+        </div>
+    </header>
+    <div class="spacer"></div>
+    <div style="margin: 12px;">
+        <form onsubmit="return false;">
+            <select onchange="copyText(this)" id="chara"><option value=""></option></select>
+            精錬：<select id="type"><option value="1">あり</option><option value="0">なし</option></select>
+        </form>
+    </div>
+    <hr>
+    <div class="input">
+        <form onsubmit="return false;">
+            <div>
+                <input type="text" id="num" value="" size="4">
+                <input type="text" id="name" value="" size="40" placeholder="name">
+                <input type="text" id="ruby" value="" size="40">
+            </div>
+            <div>
+                <input type="text" id="equip" value="" size="80" placeholder="equip">
+            </div>
+            <div>
+                <select id="refine1"></select>
+                <input type="text" id="list1" value="" size="150">
+            </div>
+            <div>
+                <select id="refine2"></select>
+                <input type="text" id="list2" value="" size="150">
+            </div>
+            <div>
+                <select id="refine3"></select>
+                <input type="text" id="list3" value="" size="150">
+            </div>
+            <div style="text-align:right; margin-top:12px;">
+                <button onclick="generate(this.form);" style="width:100px;">生成</button>
+            </div>
+        </form>
+    </div>
+    <hr>
+    <div class="output">
+        <textarea id="map"></textarea>
+    </div>
+</body>
+<script>
+(function () {
+    let charaList = {};
+    for (let i = 0; i < g_constDataManager.enchListDataManager.sourceArray.length; i++) {
+        var enchData = g_constDataManager.enchListDataManager.sourceArray[i];
+        if (enchData == undefined) continue;
+
+        charaList[enchData[4][0][1]] = enchData[4][0][0];
+    }
+
+    let chara = document.getElementById('chara');
+    let keys = Object.keys(charaList);
+    keys.sort();
+    keys.forEach((i) => {
+        chara.appendChild(createOption(i, charaList[i], i));
+    });
+    
+    createFieldOption("1");
+    createFieldOption("2");
+    createFieldOption("3");
+
+    document.getElementById('num').value = g_constDataManager.enchListDataManager.sourceArray.length;
+    
+})();
+
+function createOption(index, name, value) {
+    let base = document.createElement('option');
+    base.className = "line";
+    base.text = name
+    base.value = value
+    return base;
+}
+
+function createFieldOption(num) {
+    let elm = document.getElementById('refine' + num);
+    for (let i = 0; i <= 10; i++) {
+        let opt = document.createElement('option');
+        opt.text = '+' + i;
+        opt.value = i;
+        elm.appendChild(opt);
+    }
+}
+function copyText(el) {
+    let idx = el.selectedIndex;
+    let opt = el.options[idx];
+    document.getElementById('name').value = opt.text;
+    document.getElementById('ruby').value = opt.value;
+}
+
+function nameToId(names) {
+    return CardObjNew.find((e) => e[2] == name);
+}
+function convert(value) {
+    var names = value.split('、');
+    var ids = [];
+    for (var i in names) {
+        ids.push(nameToId(names[i])[0]);
+    }
+    return ids.join(',');
+}
+
+/** example
+[
+    310,-1,0,0,[["シーズンエンチャント（雛人形）グループ４","C2A2c3J5A4J5D2h1J5D5F2E1E2J5b2h3A3b3I3A3y304"]],
+    [],
+    [
+        [
+            [174,[50,[4537]]],,
+            [
+                [
+                    [178,[27,[4]]],,
+                    [
+                        [[186,[51,[558,664,665,560,669,670,565,674,675,567,679,680,569,684,685,574,651,689,1350,1351]]],,[]],
+                        [[184,[59,7],[60,4]],,[[[186,[51,[1352]]],,[]]]],
+                    ]
+                ],
+                [[178,[27,[3]]],,[[[186,[51,[554,555,556,516,517,518,561,562,563,519,520,521,522,523,524,570,571,572]]],,[]],[[184,[59,8],[60,4]],,[[[186,[51,[1813]]],,[]]]]]],
+                [[178,[27,[2]]],,[[[186,[51,[554,555,556,516,517,518,561,562,563,519,520,521,522,523,524,570,571,572]]],,[]],[[184,[59,9],[60,4]],,[[[186,[51,[888]]],,[]]]]]]
+            ]
+        ]
+    ],
+    []
+],
+[
+    651,-1,0,0,[["スペシャルエンチャント（オーブ）","C3y4C2h1I3A4J5D2h1J5D5A5A5f3"]],
+    [],
+    [
+        [
+            [174,[50,[5140]]],,
+            [
+                [[177,[27,[1]]],,[[[185,[59,0],[60,4]],,[[[186,[51,[2996]]],,[]]]]]],
+                [[177,[27,[2]]],,[[[185,[59,8],[60,4]],,[[[186,[51,[668,673,678,683,688,692,1247,1297]]],,[]]]]]],
+                [[177,[27,[3]]],,[[[185,[59,9],[60,1]],,[[[186,[51,[668,673,678,683,688,692,1247,1975]]],,[]]]]]],
+            ]
+        ]
+    ],
+    []
+],
+[
+    652,-1,0,0,[["スペシャルエンチャント（マヅナイ）","C3y4C2h1I3A4J5D2h1J5D5G1d3E1A2"]],
+    [],
+    [
+        [
+            [174,[50,[5141]]],,
+            [
+                [[178,[27,[4]]],,[[[186,[51,[558,560,565,567,569,574,659,599,660,661,662,663,2437]]],,[]]]],
+                [[178,[27,[3]]],,[[[186,[51,[558,560,565,567,569,574,659,599,660,661,662,663,1594]]],,[]]]],
+                [[178,[27,[2]]],,[[[186,[51,[990,1848,2657,2169,1247,1248,1625,1179]]],,[]]]]],
+            ]
+    ],
+    []
+],
+*/
+function generate(form) {
+    let refine = document.getElementById('type').value == "1";
+
+    let id = form.num.value;
+    let name = form.name.value;
+    let ruby = form.ruby.value;
+    let equip = form.equip.value;
+    
+    let list1 = convert(form.list1.value);
+    let list2 = convert(form.list2.value);
+    let list3 = convert(form.list3.value);
+
+    let text = '';
+    
+    if (refine) {
+        let refine1 = form.refine1.value;
+        let refine2 = form.refine2.value;
+        let refine3 = form.refine3.value;
+        text = `[
+    ${id},-1,0,0,[["${name}","${ruby}"]],
+    [],
+    [
+        [
+            [174,[50,[${equip}]]],,
+            [
+                [[177,[27,[1]]],,[[[185,[59,${refine1}],[60,4]],,[[[186,[51,[${list1}]]],,[]]]]]],
+                [[177,[27,[2]]],,[[[185,[59,${refine2}],[60,4]],,[[[186,[51,[${list2}]]],,[]]]]]],
+                [[177,[27,[3]]],,[[[185,[59,${refine3}],[60,1]],,[[[186,[51,[${list3}]]],,[]]]]]],            
+            ]
+        ]
+    ],
+    []
+],
+`;        
+    } else {
+        text = `[
+    ${id},-1,0,0,[["${name}","${ruby}"]],
+    [],
+    [
+        [
+            [174,[50,[${equip}]]],,
+            [
+                [[178,[27,[4]]],,[[[186,[51,[${list1}]]],,[]]]],
+                [[178,[27,[3]]],,[[[186,[51,[${list2}]]],,[]]]],
+                [[178,[27,[2]]],,[[[186,[51,[${list3}]]],,[]]]]],
+            ]
+        ]
+    ],
+    []
+],
+`;        
+    }
+
+    document.getElementById('map').value = text;
+}
+</script>
+</html>    
