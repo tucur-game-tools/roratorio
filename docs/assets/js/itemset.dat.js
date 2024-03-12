@@ -2571,6 +2571,9 @@
 		[-2995,-2994,-1348],
 		[-2997,-2996,-1348],
 		[5142,5141,-2437],
+		[-2999,-2998,-1245],
+		[-3001,-3000,-1348],
+		[-3003,-3002,-1348],
 	];
 	
 	// SEARCH: END
@@ -4936,6 +4939,9 @@
 	CardIdToSetIdMap[2992] = [2548];
 	CardIdToSetIdMap[2994] = [2549];
 	CardIdToSetIdMap[2996] = [2550];
+	CardIdToSetIdMap[2998] = [2552];
+	CardIdToSetIdMap[3000] = [2553];
+	CardIdToSetIdMap[3002] = [2554];
 
 	// SEARCH: END CARD
 /*
