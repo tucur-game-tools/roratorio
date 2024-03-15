@@ -8294,7 +8294,6 @@ else {
 			if (n_A_BaseLV >= 100) {
 				wbairitu += n_A_BaseLV - 100;
 			}
-			console.log(wbairitu);
 			wHITsuu = attackMethodConfArray[0].GetOptionValue(0) / 2;
 			wCast = 2000;
 			n_Delay[2] = 3000;
