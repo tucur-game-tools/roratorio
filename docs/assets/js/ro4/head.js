@@ -8292,8 +8292,9 @@ else {
 
 			wbairitu = 400;
 			if (n_A_BaseLV >= 100) {
-				wbairitu += n_A_BaseLV / 100;
+				wbairitu += n_A_BaseLV - 100;
 			}
+			console.log(wbairitu);
 			wHITsuu = attackMethodConfArray[0].GetOptionValue(0) / 2;
 			wCast = 2000;
 			n_Delay[2] = 3000;
@@ -9899,6 +9900,9 @@ g_bUnknownCasts = true;
 
 			// SPL補正
 			wbairitu += 5 * GetTotalSpecStatus(MIG_PARAM_ID_SPL);
+			
+			// スピリットマスターの習得レベル
+			wbairitu *= 6.2; // TODO: 倍率よくわからんから近似値出る値にしてる
 
 			// ベースレベル補正
 			wbairitu *= n_A_BaseLV / 100;
