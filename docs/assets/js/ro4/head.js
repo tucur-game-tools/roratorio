@@ -9925,8 +9925,11 @@ g_bUnknownCasts = true;
 			// SPL補正
 			wbairitu += 5 * GetTotalSpecStatus(MIG_PARAM_ID_SPL);
 
+			// スピリットマスターの習得レベル
+			wbairitu += 1600; // TODO: 倍率よくわからん
+
 			// ベースレベル補正
-			wbairitu *= n_A_BaseLV / 100;
+			wbairitu *= (n_A_BaseLV-100) / 100; // TODO: 倍率計算まちがってるけど、とりあえずそこそこ近似値がでるので一旦これ
 
 			break;
 
