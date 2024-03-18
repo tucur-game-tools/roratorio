@@ -8292,7 +8292,7 @@ else {
 
 			wbairitu = 400;
 			if (n_A_BaseLV >= 100) {
-				wbairitu += n_A_BaseLV - 100;
+				wbairitu *= (n_A_BaseLV / 100);
 			}
 			wHITsuu = attackMethodConfArray[0].GetOptionValue(0) / 2;
 			wCast = 2000;
