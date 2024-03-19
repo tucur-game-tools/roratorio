@@ -8292,7 +8292,7 @@ else {
 
 			wbairitu = 400;
 			if (n_A_BaseLV >= 100) {
-				wbairitu *= (n_A_BaseLV / 100);
+				wbairitu *= n_A_BaseLV / 100;
 			}
 			wHITsuu = attackMethodConfArray[0].GetOptionValue(0) / 2;
 			wCast = 2000;
@@ -9885,26 +9885,29 @@ g_bUnknownCasts = true;
 			// TODO: 詠唱時間等未実測スキル
 			g_bUnknownCasts = true;
 
-			wActiveHitNum = 10;
-
 			n_A_Weapon_zokusei = attackMethodConfArray[0].GetOptionValue(1);
 //			wCast = 100 * n_A_ActiveSkillLV;
 //			n_KoteiCast = 100 * n_A_ActiveSkillLV;
 
 			// 基本倍率
 			wbairitu = 800 + (100 * n_A_ActiveSkillLV);
+			// スピリットマスターの習得レベル（10)
+			wbairitu += 200;
 			if (UsedSkillSearch(SKILL_ID_X_1232) > 0) {
 				wbairitu = 1600 + (200 * n_A_ActiveSkillLV);
+				// スピリットマスターの習得レベル（10)
+				wbairitu += 400;
 			}
 
 			// SPL補正
 			wbairitu += 5 * GetTotalSpecStatus(MIG_PARAM_ID_SPL);
-			
-			// スピリットマスターの習得レベル
-			wbairitu *= 6.2; // TODO: 倍率よくわからんから近似値出る値にしてる
 
 			// ベースレベル補正
 			wbairitu *= n_A_BaseLV / 100;
+
+			// Hit数
+			wActiveHitNum = 10;
+			wbairitu *= 10;
 
 			break;
 
@@ -9918,18 +9921,19 @@ g_bUnknownCasts = true;
 
 			// 基本倍率
 			wbairitu = 2400 + (300 * n_A_ActiveSkillLV);
+			// スピリットマスターの習得レベル（10)
+			wbairitu += 1250;
 			if (UsedSkillSearch(SKILL_ID_X_1232) > 0) {
 				wbairitu = 4800 + (600 * n_A_ActiveSkillLV);
+				// スピリットマスターの習得レベル（10)
+				wbairitu += 2500;
 			}
 
 			// SPL補正
 			wbairitu += 5 * GetTotalSpecStatus(MIG_PARAM_ID_SPL);
 
-			// スピリットマスターの習得レベル
-			wbairitu += 1600; // TODO: 倍率よくわからん
-
 			// ベースレベル補正
-			wbairitu *= (n_A_BaseLV-100) / 100; // TODO: 倍率計算まちがってるけど、とりあえずそこそこ近似値がでるので一旦これ
+			wbairitu *= n_A_BaseLV / 100;
 
 			break;
 
