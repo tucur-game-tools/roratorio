@@ -9885,7 +9885,7 @@ g_bUnknownCasts = true;
 			// TODO: 詠唱時間等未実測スキル
 			g_bUnknownCasts = true;
 
-			n_A_Weapon_zokusei = attackMethodConfArray[0].GetOptionValue(1);
+			n_A_Weapon_zokusei = attackMethodConfArray[0].GetOptionValue(0);
 //			wCast = 100 * n_A_ActiveSkillLV;
 //			n_KoteiCast = 100 * n_A_ActiveSkillLV;
 
@@ -9915,7 +9915,7 @@ g_bUnknownCasts = true;
 			// TODO: 詠唱時間等未実測スキル
 			g_bUnknownCasts = true;
 
-			n_A_Weapon_zokusei = attackMethodConfArray[0].GetOptionValue(1);
+			n_A_Weapon_zokusei = attackMethodConfArray[0].GetOptionValue(0);
 //			wCast = 100 * n_A_ActiveSkillLV;
 //			n_KoteiCast = 100 * n_A_ActiveSkillLV;
 
