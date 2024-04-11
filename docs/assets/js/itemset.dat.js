@@ -2574,6 +2574,8 @@
 		[-2999,-2998,-1245],
 		[-3001,-3000,-1348],
 		[-3003,-3002,-1348],
+		[-3008,-3007,-1813],
+		[5154,5153,-2658],
 	];
 	
 	// SEARCH: END
@@ -3969,7 +3971,8 @@
 	ItemIdToSetIdMap[5030] = [2516];
 	ItemIdToSetIdMap[5074] = [2523];
 	ItemIdToSetIdMap[5141] = [2551];
-	
+	ItemIdToSetIdMap[5153] = [2556];
+
 
 	// SEARCH: END ITEM
 	/*
@@ -4942,6 +4945,7 @@
 	CardIdToSetIdMap[2998] = [2552];
 	CardIdToSetIdMap[3000] = [2553];
 	CardIdToSetIdMap[3002] = [2554];
+	CardIdToSetIdMap[3007] = [2555];
 
 	// SEARCH: END CARD
 /*
